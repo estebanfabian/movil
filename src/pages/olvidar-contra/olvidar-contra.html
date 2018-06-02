@@ -1,0 +1,41 @@
+
+<ion-header>
+
+    <ion-navbar>
+        <h6 align="center">RECUPERE SU CONTRASEÑA</h6>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <form [formGroup]="formula">
+        <ion-list>
+            <ion-item>
+                <ion-icon name="card" item-start></ion-icon>
+                <ion-label stacked>Código:</ion-label>
+                <ion-input formControlName="codigo" type="number" placeholder="Código"></ion-input>
+            </ion-item>            
+            <ion-item *ngIf="formula.get('codigo').errors && formula.get('codigo').dirty">
+                <p color="danger" ion-text *ngIf="formula.get('codigo').hasError('required')">Este campo es requerido</p>
+                <p color="danger" ion-text *ngIf="formula.get('codigo').hasError('pattern')">Por favor escriba solo numeros</p>
+                <p color="danger" ion-text *ngIf="formula.get('codigo').hasError('minlength')">Por favor escriba minimo 6 caracteres</p>
+                <p color="danger" ion-text *ngIf="formula.get('codigo').hasError('maxlength')">Por favor escriba maximo 20 caracteres</p>
+            </ion-item>
+            <ion-item>
+                <ion-icon name="mail" item-start></ion-icon>
+                <ion-label stacked>Correo:</ion-label>
+                <ion-input formControlName="emailPrincipal" type="email" placeholder="Correo"></ion-input>
+            </ion-item>
+
+            <ion-item *ngIf="formula.get('emailPrincipal').errors && formula.get('emailPrincipal').dirty">
+                <p color="danger" ion-text *ngIf="formula.get('emailPrincipal').hasError('required')">Este campo es requerido</p>
+                <p color="danger" ion-text *ngIf="formula.get('emailPrincipal').hasError('email')">Este correo no es válido</p>
+            </ion-item>
+
+        </ion-list>
+        <div padding>
+            <button ion-button full block  [disabled]="!formula.valid"  (click)="olvido()">Ingresar</button>
+        </div>
+    </form>
+</ion-content>

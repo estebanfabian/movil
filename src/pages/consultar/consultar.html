@@ -1,0 +1,105 @@
+
+<ion-header>
+
+    <ion-navbar>
+        <h6 align="left">CONSULTE SU LIBRO </h6>
+
+
+    </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+
+
+    <form [formGroup]="formu">
+
+        <ion-list>
+            <ion-item>
+                <ion-label>Buscar por: </ion-label>
+                <ion-select formControlName="Buscar" >
+                    <ion-option value="Id">Isbn</ion-option>
+                    <ion-option value="Tit">Título</ion-option>
+                    <ion-option value="Aut">Autor</ion-option>
+                    <ion-option value="Tema">Tema</ion-option>
+                    <ion-option value="Edit">Editorial</ion-option>
+                    <ion-option value="Facu">Facultad</ion-option>
+                </ion-select>
+            </ion-item> 
+
+            <ion-item *ngIf="formu.get('Buscar').errors && formu.get('Buscar').dirty">
+                <p color="danger" ion-text *ngIf="formu.get('Buscar').hasError('required')">Este campo  es requerido</p>
+
+            </ion-item>
+
+
+
+
+            <ion-item>
+                <ion-icon name="search" item-start></ion-icon>
+                <ion-input type="text" formControlName="Consulta" placeholder="Buscar"></ion-input>
+            </ion-item>  
+            <ion-item *ngIf="formu.get('Consulta').errors && formu.get('Consulta').dirty">
+                <p color="danger" ion-text *ngIf="formu.get('Consulta').hasError('required')">Este campo  es requerido</p>
+
+            </ion-item>
+        </ion-list>
+
+        <div padding>
+            <button ion-button full color="mi_color" full block  [disabled]="!formu.valid"  (click)="Datos_libro()">Buscar</button>
+        </div>
+    </form>
+
+
+    <div *ngIf="ocultar">
+        <ion-item >
+            <ion-grid>
+                <ion-row nowrap class="forecast_container">
+
+                    <ion-col col-5>Id</ion-col>
+                    <ion-col col-5>Titulo</ion-col>
+                    <ion-col col-5> Autor</ion-col>
+                    <ion-col col-5>Tema</ion-col>
+                    <ion-col col-5>Editorial</ion-col>
+                    <ion-col col-5>Facultad</ion-col>
+                    <ion-col col-5>Estado</ion-col>
+                    <ion-col col-5></ion-col>
+
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+
+
+
+        <ion-item  *ngFor="let lista of tabla" >     
+            <ion-grid>
+                <ion-row nowrap class="forecast_container">
+
+
+                    <ion-col col-5>{{lista.isbn}}  </ion-col>
+                    <ion-col col-5>{{lista.titulo}}</ion-col>
+                    <ion-col col-5>{{lista.autor}}</ion-col>
+                    <ion-col col-5>{{lista.tema}}</ion-col>
+                    <ion-col col-5>{{lista.editorial}}</ion-col>
+                    <ion-col col-5>{{lista.facultad}}</ion-col>
+                    <ion-col col-5>{{lista.estado}}</ion-col>
+
+                    <div *ngIf="lista.estado== 'reservado'" >  
+                        <ion-col col-5> <button ion-button small color="danger"[disabled]="lista.estado=='reservado'">Reservado</button></ion-col>
+                    </div>
+                    <div *ngIf="lista.estado== 'libre'">
+                        <ion-col col-5> <button ion-button small color="estado" (click)="reservar(lista)">Disponible</button></ion-col>
+                    </div>
+                    <div *ngIf="lista.estado== 'prestamo'" >  
+                        <ion-col col-5> <button ion-button small color="micolor"[disabled]="lista.estado=='prestamo'">Prestamo</button></ion-col>
+                    </div>
+
+
+                </ion-row>
+
+            </ion-grid>
+        </ion-item>   
+
+    </div>
+
+
+</ion-content>

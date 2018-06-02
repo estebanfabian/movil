@@ -1,0 +1,47 @@
+<!--
+  Generated template for the PrincipalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <h6 align="center">RESERVA DE LIBROS REPUBLICANA </h6>
+
+
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <div>
+        <ion-item *ngFor="let list of info" text-right> 
+             <p>{{list.nombre}}</p>
+            <img  src= "{{list.foto}}" width="50" (click)="listar()">
+           
+        </ion-item>
+        <div *ngIf="ocultar">
+            <ion-list text-right>
+                <button ion-item (click)="Modificar()">
+                    <ion-icon name="contacts" item-start></ion-icon>
+                    Modificar Perfil
+                </button>
+
+                <button ion-item (click)="Ir_Home()">
+                    <ion-icon name="log-out" item-start></ion-icon>
+                   Cerrar Sesion
+                </button>
+
+
+            </ion-list>
+
+        </div>
+        
+    </div>
+    <button ion-button full (click)="consultar()">consultar</button>
+        <button ion-button full (click)="Mis_Reservas()">Mis Reservas</button>
+        <button ion-button full (click)="Multas()">Multas</button>
+
+</ion-content>
