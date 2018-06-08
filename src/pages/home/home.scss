@@ -1,6 +1,7 @@
 @font-face{
     font-family: "LETRA_CABECERA";
     font-size: 18px;
+    font-weight: 900;
     src:url(../..//assets/fonts/SoccerLeague-Italic.ttf)
 }
 
@@ -10,9 +11,12 @@ page-home {
         font-family: "LETRA_CABECERA";
     }
     ion-input{
+        font-weight: 900;
         color:#000000  
-    }    
- 
+    }   
+    ion-label {
+        font-weight: 900;
+    }
 }
 
     //Codigo del fondo
