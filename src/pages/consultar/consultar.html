@@ -1,4 +1,3 @@
-
 <ion-header>
 
     <ion-navbar>
@@ -49,10 +48,11 @@
         </div>
     </form>
 
-
     <div *ngIf="ocultar">
-        <ion-item >
+        <ion-scroll scrollX="true" scrollY="true" zoom="false" no-padding>
+        <ion-item>
             <ion-grid>
+                
                 <ion-row nowrap class="forecast_container">
 
                     <ion-col col-5>Id</ion-col>
@@ -98,8 +98,15 @@
 
             </ion-grid>
         </ion-item>   
-
+</ion-scroll>
     </div>
 
 
 </ion-content>
+
+
+<ion-footer>
+    <ion-navbar>
+        <img src="assets/imgs/abajo.png">
+    </ion-navbar>
+</ion-footer>

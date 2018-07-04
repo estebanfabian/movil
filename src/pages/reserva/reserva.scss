@@ -1,28 +1,41 @@
 @font-face{
     font-family: "LETRA_CABECERA";
     font-size: 18px;
-    src:url(../..//assets/fonts/SoccerLeague-Italic.ttf)
+    src:url(../..//assets/fonts/arriba.otf)
 }
-page-reserva {
-    h6{
-        color:#060;
+
+page-reserva{
+    
+
+     h6{
+        color:#C12859;
         font-family: "LETRA_CABECERA";
     }
+    
+   p
+    {
+        color:#000000;
+    
+    }   
+    
+    ion-label {
+        font-weight: 900;
+    }
     ion-input{
-        color:orange
-    } 
-     ion-select{
-        color:orange
+        font-weight: 900;
     }
-   p{
-        color:orange
+    ion-select{
+        font-weight: 300;
     }
-    //Codigo del fondo
-    ion-content {
-         background-image: url("../assets/imgs/fondo_1.jpg");
-        background-size: cover;
-        background-position: center;
+    ion-datetime{
+        font-weight: 900;
     }
+
+  ion-content {
+    background-image: url("../assets/imgs/fondo_1.png");
+    background-size: cover;
+    background-position: center;
+}
 
 
 

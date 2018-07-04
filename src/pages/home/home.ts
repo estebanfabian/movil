@@ -34,6 +34,7 @@ export class HomePage {
         });
     }
 
+
     ValidarUsuario() {
 
         this.respuesta = this.ConectServ.Validar_user(this.form.value);
@@ -60,6 +61,7 @@ export class HomePage {
                 });
                 toast.present();
             }
+
 
         }, err => {
             console.log(JSON.stringify(err));

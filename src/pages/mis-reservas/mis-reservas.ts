@@ -75,7 +75,7 @@ export class MisReservasPage {
                         this.respuesta = this.ConectServ.Eliminar_reser(infor);
                         this.respuesta.subscribe(data => {
                             console.log(data);
-                                this.respuesta=data
+                            this.respuesta = data
                             if (this.respuesta.sucess == "ok") {
                                 let toast = this.toastCtrl.create({
                                     message: "Su reserva ha sido cancelada",
@@ -85,32 +85,32 @@ export class MisReservasPage {
 
                                 toast.present();
 
-                            
-                            this.navCtrl.setRoot(PrincipalPage,{info: this.info});
-                        }
+
+                                this.navCtrl.setRoot(PrincipalPage, {info: this.info});
+                            }
                             else if (this.respuesta.sucess == "no") {
-                        this.presentToast("No se ha podido cancelar el libro");
+                                this.presentToast("No se ha podido cancelar el libro");
+                            }
+                        }, err => {
+                            console.log(err)
+                            this.presentToast("Error en el servidor.Contacte al administrador");
+                        });
                     }
-                }, err => {
-                    console.log(err)
-                    this.presentToast("Error en el servidor.Contacte al administrador");
-                });
-    }
-}
+                }
             ]
         });
-alert.present();
+        alert.present();
 
     }
-presentToast(msg) {
-    let toast = this.toastCtrl.create({
-        message: msg,
-        duration: 3000,
-        position: 'bottom'
-    });
+    presentToast(msg) {
+        let toast = this.toastCtrl.create({
+            message: msg,
+            duration: 3000,
+            position: 'bottom'
+        });
 
-    toast.present();
+        toast.present();
 
-}
+    }
 }
 

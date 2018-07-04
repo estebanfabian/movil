@@ -20,12 +20,12 @@
             <ion-row>
 
                 <ion-col> <img src= "{{list.imagen}}" width="100" height="200"></ion-col>
-                <ion-col> <ion-row><ion-label stacked>ID:   {{lista.isbn}}</ion-label></ion-row>
-                    <ion-row><ion-label stacked>TITULO:   {{lista.titulo}}</ion-label></ion-row>
-                    <ion-row><ion-label stacked>AUTOR:    {{lista.autor}}</ion-label></ion-row>
-                    <ion-row><ion-label stacked>TEMA:   {{lista.tema}}</ion-label></ion-row>
-                    <ion-row><ion-label stacked>EDITORIAL:   {{lista.editorial}}</ion-label></ion-row>
-                    <ion-row><p>RESEÑA: {{list.resena}}</p></ion-row>   
+                <ion-col> <ion-row><ion-label color="negro"  stacked>ID:   {{lista.isbn}}</ion-label></ion-row>
+                    <ion-row><ion-label color="negro" stacked>TITULO:   {{lista.titulo}}</ion-label></ion-row>
+                    <ion-row><ion-label color="negro" stacked>AUTOR:    {{lista.autor}}</ion-label></ion-row>
+                    <ion-row><ion-label color="negro" stacked>TEMA:   {{lista.tema}}</ion-label></ion-row>
+                    <ion-row><ion-label color="negro" stacked>EDITORIAL:   {{lista.editorial}}</ion-label></ion-row>
+                    <ion-row><p ion-text color="negro">RESEÑA: {{list.resena}}</p></ion-row>   
 
                 </ion-col>
             </ion-row>
@@ -40,12 +40,12 @@
                 <p>FECHA DE ENTREGA</p>
             </ion-row>
             <ion-row nowrap class="forecast_container">
-                <ion-col>  <p>{{fecha1}}</p></ion-col>
+                <ion-col>  <p ion-text color="negro">{{fecha1}}</p></ion-col>
                 <ion-col>    
                     <ion-select (ionChange)="calcular_dias()" formControlName="dias" cancelText="Cancelar" okText = "Aceptar"> 
                         <ion-option value="1">1 dia</ion-option>
                         <ion-option value="2">2 dias</ion-option>
-                        <ion-option value="3">3 dias</ion-option>
+                      
                     </ion-select>
                     <ion-item *ngIf="myForm.get('dias').errors && myForm.get('dias').dirty">
                         <p color="danger" ion-text *ngIf="myForm.get('dias').hasError('required')">Este campo es requerido</p>
@@ -66,3 +66,9 @@
 
 
 </ion-content>
+
+<ion-footer>
+    <ion-navbar>
+        <img src="assets/imgs/abajo.png">
+    </ion-navbar>
+</ion-footer>

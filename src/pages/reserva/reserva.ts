@@ -82,14 +82,9 @@ export class ReservaPage {
                 this.fecha2 = moment(this.fecha1).add(3, "days").format('YYYY/MM/DD hh:mm:ss');
             }
         }
-        else if (this.myForm.value.dias == "3") {
-            this.fecha2 = moment(this.fecha1).add(3, "days").format('YYYY/MM/DD hh:mm:ss');
-            if (moment(this.fecha2).format("dddd") == "Sunday") {
-                this.fecha2 = moment(this.fecha1).add(4, "days").format('YYYY/MM/DD hh:mm:ss');
-            }
+       
         }
-    }
-
+    
 
     reservar() {
 

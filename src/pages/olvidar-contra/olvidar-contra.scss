@@ -1,23 +1,31 @@
-
-
 @font-face{
     font-family: "LETRA_CABECERA";
     font-size: 18px;
-    src:url(../..//assets/fonts/SoccerLeague-Italic.ttf)
+    src:url(../..//assets/fonts/arriba.otf)
 }
+
 
 page-olvidar-contra { 
     h6{
        color:#C12859;
         font-family: "LETRA_CABECERA";
     }
-    ion-input{
-        color:orange
-    } 
-
-    ion-content {
-        background-image: url("../assets/imgs/fondo_1.jpg");;
-        background-size: cover;
-        background-position: center;
+      
+   p
+    {
+        font-weight: 900;
+    }   
+    
+    ion-label {
+        font-weight: 900;
     }
+    ion-input{
+        font-weight: 900;
+    }
+
+ion-content {
+    background-image: url("../assets/imgs/fondo_1.png");
+    background-size: cover;
+    background-position: center;
+}
 }

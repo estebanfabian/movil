@@ -13,8 +13,7 @@ export class ConectarProvider {
     constructor(public http: HttpClient) {
 
     }
-    url = 'http://127.0.0.1/Biblioteca/'
-   // url = 'http://192.168.0.10/BibliotecaClienteServidor/'// casa Felicity
+    url = 'http://192.168.0.3/BibliotecaClienteServidor/'// casa Felicity
    // url = 'http://192.168.0.23/BibliotecaClienteServidor/'// casa estemen
      // url = 'http://192.168.0.21/'// servi
     options = {
@@ -93,6 +92,14 @@ export class ConectarProvider {
     }
     Eliminar_reser(dataJSON){
         var url = this.url + 'Suprimir';
+        return this.http.post(url, JSON.stringify(dataJSON), this.options)
+    }
+    mod_usuario(dataJSON){
+        var url = this.url + 'Modificar_usuario';
+        return this.http.post(url, JSON.stringify(dataJSON), this.options)
+    }
+    mostrar_usuario(dataJSON){
+        var url = this.url + 'Most_usuario';
         return this.http.post(url, JSON.stringify(dataJSON), this.options)
     }
 }

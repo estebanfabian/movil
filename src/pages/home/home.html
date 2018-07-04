@@ -1,7 +1,7 @@
 <ion-header>
     <ion-navbar>
         <ion-title>
-            <h6 align="center">RESERVA DE LIBROS REPUBLICANA </h6>
+            <h6 align="center"> BIBLOCUR </h6>
         </ion-title>
     </ion-navbar>
 </ion-header>
@@ -11,37 +11,37 @@
         <ion-list>
             <ion-item>
                 <ion-icon name="card" item-start></ion-icon>
-                <ion-label color="primary" stacked>Código:</ion-label>
+                <ion-label color="negro" stacked>Código:</ion-label>
                 <ion-input formControlName="codigo" type="number" placeholder="Código"></ion-input>
             </ion-item>            
             <ion-item *ngIf="form.get('codigo').errors && form.get('codigo').dirty">
                 <p color="danger" ion-text *ngIf="form.get('codigo').hasError('required')">Este campo es requerido</p>
-                <p color="danger" ion-text *ngIf="form.get('codigo').hasError('pattern')">Por favor escriba solo numeros</p>
-                <p color="danger" ion-text *ngIf="form.get('codigo').hasError('minlength')">Por favor escriba minimo 6 caracteres</p>
-                <p color="danger" ion-text *ngIf="form.get('codigo').hasError('maxlength')">Por favor escriba maximo 10 caracteres</p>
+                <p color="danger" ion-text *ngIf="form.get('codigo').hasError('pattern')">Por favor escriba solo números</p>
+                <p color="danger" ion-text *ngIf="form.get('codigo').hasError('minlength')">Por favor escriba mínimo 6 caracteres</p>
+                <p color="danger" ion-text *ngIf="form.get('codigo').hasError('maxlength')">Por favor escriba máximo 10 caracteres</p>
             </ion-item>
             <ion-item>
                 <ion-icon name="eye-off" item-start></ion-icon>
-                <ion-label color="primary" stacked>Contraseña:</ion-label>
+                <ion-label color="negro" stacked>Contraseña:</ion-label>
                 <ion-input formControlName="contrasena" type="password" placeholder="Contraseña"></ion-input>
             </ion-item>
             <ion-item *ngIf="form.get('contrasena').errors && form.get('contrasena').dirty">
                 <p color="danger" ion-text *ngIf="form.get('contrasena').hasError('required')">Este campo  es requerido</p>
-                <p color="danger" ion-text *ngIf="form.get('contrasena').hasError('minlength')">Por favor escriba minimo 6 caracteres</p>
+                <p color="danger" ion-text *ngIf="form.get('contrasena').hasError('minlength')">Por favor escriba mínimo 6 caracteres</p>
             </ion-item>
         </ion-list>
         <div padding>
             <button ion-button full block  [disabled]="!form.valid"  (click)="ValidarUsuario()">Ingresar</button>
         </div>
     </form>
-    <button ion-button full color="mi_color" (click)="Ir_Registro()">REGISTRAR</button>
-    <button ion-button color="light" clear (click)="Ir_Contra()">¿Olvide mi contraseña?</button>
+    <button ion-button full  (click)="Ir_Registro()">REGISTRAR</button>
+    <button ion-button color="negro" clear (click)="Ir_Contra()">¿Olvidé mi contraseña?</button>
 </ion-content>>
 
 
 <ion-footer>
     <ion-navbar>
-        <img src="../../assets/imgs/abajo.png" alt=""/>
+        <img src="assets/imgs/abajo.png">
     </ion-navbar>
 </ion-footer>
 

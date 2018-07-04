@@ -5,7 +5,10 @@
 // roboto, and noto sans fonts
 $font-path: "../assets/fonts";
 $background-color: transparent;
-$text-input-placeholder-color:(#E80000);
+
+$text-input-placeholder-color:(#000000);
+$datetime-md-placeholder-color:(#000000);
+$select-md-placeholder-color:(#000000);
 
 // The app direction is used to include
 // rtl styles in your app. For more info, please see:
@@ -37,11 +40,13 @@ $app-direction: ltr;
 $colors: (
   primary:    #488aff,
   secondary:  #32db64,
-  danger:     #E80000,
+  danger:     #FA0101,
   light:      #f4f4f4,
   dark:       #222,
   mi_color:   #58FAF4,
-  estado: #00FB11
+  negro:      #000000,
+  estado: #00FB11,
+  blanco: #FFFFFF
 );
 
 

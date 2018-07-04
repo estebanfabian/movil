@@ -3,6 +3,7 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {ConsultarPage} from '../consultar/consultar';
 import {MisReservasPage} from '../mis-reservas/mis-reservas';
 import {HomePage} from '../home/home';
+import {ModificarPage} from '../modificar/modificar';
 
 
 @IonicPage()
@@ -39,7 +40,7 @@ export class PrincipalPage {
         
     }
     Modificar(){
-        
+        this.navCtrl.push(ModificarPage ,{info: this.info});
     }
 }
 

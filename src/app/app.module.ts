@@ -14,6 +14,7 @@ import {ConectarProvider} from '../providers/conectar/conectar';
 import {ReservaPage} from '../pages/reserva/reserva';
 import {ConsultarPage} from '../pages/consultar/consultar';
 import {MisReservasPage} from '../pages/mis-reservas/mis-reservas';
+import {ModificarPage} from '../pages/modificar/modificar';
 import {FileTransfer,FileUploadOptions,FileTransferObject} from '@ionic-native/file-transfer';
 import {File} from '@ionic-native/file';
 
@@ -29,7 +30,8 @@ import {File} from '@ionic-native/file';
         OlvidarContraPage,
         ReservaPage,
         ConsultarPage,
-        MisReservasPage
+        MisReservasPage,
+        ModificarPage
 
     ],
     imports: [
@@ -46,7 +48,8 @@ import {File} from '@ionic-native/file';
         OlvidarContraPage,
         ReservaPage,
         ConsultarPage,
-        MisReservasPage
+        MisReservasPage,
+        ModificarPage
     ],
     providers: [
         StatusBar,

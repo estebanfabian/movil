@@ -166,7 +166,7 @@ export class RegistroPage {
         var random = Math.floor(Math.random() * 1000000);
         let options: FileUploadOptions = {
             fileKey: 'photo',
-            fileName: "http://192.168.0.10/BibliotecaClienteServidor/img/usuario/foto_" + random + ".jpg",
+            fileName: "http://192.168.0.3/BibliotecaClienteServidor/img/usuario/foto_" + random + ".jpg",
             chunkedMode: false,
             mimeType: "image/jpeg",
             headers: {},
@@ -175,7 +175,7 @@ export class RegistroPage {
         }
 
 
-        fileTransfer.upload(this.foto, 'http://192.168.0.10/BibliotecaClienteServidor/Foto', options)
+        fileTransfer.upload(this.foto, 'http://192.168.0.3/BibliotecaClienteServidor/Foto', options)
             .then((data) => {
                 let datos = {
                     codigo: this.myForm.value.codigo,
