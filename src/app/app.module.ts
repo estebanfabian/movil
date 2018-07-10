@@ -3,9 +3,9 @@ import {ErrorHandler, NgModule} from '@angular/core';
 import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {StatusBar} from '@ionic-native/status-bar';
-import { HttpClientModule } from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 import {MyApp} from './app.component';
-import { Camera } from '@ionic-native/camera';
+import {Camera} from '@ionic-native/camera';
 import {HomePage} from '../pages/home/home';
 import {RegistroPage} from '../pages/registro/registro';
 import {PrincipalPage} from '../pages/principal/principal';
@@ -15,11 +15,10 @@ import {ReservaPage} from '../pages/reserva/reserva';
 import {ConsultarPage} from '../pages/consultar/consultar';
 import {MisReservasPage} from '../pages/mis-reservas/mis-reservas';
 import {ModificarPage} from '../pages/modificar/modificar';
-import {FileTransfer,FileUploadOptions,FileTransferObject} from '@ionic-native/file-transfer';
+import {MisMultasPage} from '../pages/mis-multas/mis-multas'
+import {FileTransfer, FileUploadOptions, FileTransferObject} from '@ionic-native/file-transfer';
 import {File} from '@ionic-native/file';
 
-
-    
 
 @NgModule({
     declarations: [
@@ -31,8 +30,8 @@ import {File} from '@ionic-native/file';
         ReservaPage,
         ConsultarPage,
         MisReservasPage,
-        ModificarPage
-
+        ModificarPage,
+        MisMultasPage
     ],
     imports: [
         BrowserModule,
@@ -49,7 +48,8 @@ import {File} from '@ionic-native/file';
         ReservaPage,
         ConsultarPage,
         MisReservasPage,
-        ModificarPage
+        ModificarPage,
+        MisMultasPage
     ],
     providers: [
         StatusBar,
@@ -58,9 +58,7 @@ import {File} from '@ionic-native/file';
         FileTransfer,
         File,
         FileTransferObject,
-        
-        
-        
+
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         ConectarProvider
     ]

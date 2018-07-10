@@ -7,7 +7,6 @@ import {Camera, CameraOptions} from '@ionic-native/camera';
 import {ConectarProvider} from '../../providers/conectar/conectar';
 import {HomePage} from '../home/home';
 
-
 @IonicPage()
 @Component({
     selector: 'page-registro',
@@ -19,8 +18,6 @@ export class RegistroPage {
     foto;
     infor;
     respuesta;
-
-
 
     constructor(
         public navCtrl: NavController,
@@ -153,8 +150,6 @@ export class RegistroPage {
             });
     }
 
-
-
     SubirSer() {
 
         let loader = this.loadingCtrl.create({
@@ -166,16 +161,14 @@ export class RegistroPage {
         var random = Math.floor(Math.random() * 1000000);
         let options: FileUploadOptions = {
             fileKey: 'photo',
-            fileName: "http://192.168.0.3/BibliotecaClienteServidor/img/usuario/foto_" + random + ".jpg",
+            fileName: "http://192.168.0.15/biblioteca/ximg/usuario/foto_" + random + ".jpg",//mirar  como hacer para no subir la direcion por si se cambia el servidor
             chunkedMode: false,
             mimeType: "image/jpeg",
             headers: {},
             httpMethod: 'POST',
-
         }
 
-
-        fileTransfer.upload(this.foto, 'http://192.168.0.3/BibliotecaClienteServidor/Foto', options)
+        fileTransfer.upload(this.foto, 'http://192.168.0.15/biblioteca/Foto', options)
             .then((data) => {
                 let datos = {
                     codigo: this.myForm.value.codigo,
@@ -183,26 +176,18 @@ export class RegistroPage {
                 };
                 this.respuesta = this.ConectServ.Actualizar_Foto(datos);
                 this.respuesta.subscribe(data => {
-
                    
                 loader.dismiss();
                 let toast = this.toastCtrl.create({
                     message: 'El usuario ha sido registrado Satisfactoriamente',
                     duration: 5000,
                     position: 'bottom'
-
                 });
                 toast.present();
-
                 this.navCtrl.setRoot(HomePage);
-
             }, (err) => {
                 loader.dismiss();
-
-
             });
     });
     }
-
-
 }

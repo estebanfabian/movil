@@ -1,24 +1,12 @@
-<!--
-  Generated template for the ReservaPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
     <ion-navbar> 
         <h6 align="left">RESERVA DE LIBROS REPUBLICANA </h6>
     </ion-navbar>
-
 </ion-header>
-
-
 <ion-content padding>
-
     <ion-grid>
         <ion-list *ngFor="let list of img" > 
             <ion-row>
-
                 <ion-col> <img src= "{{list.imagen}}" width="100" height="200"></ion-col>
                 <ion-col> <ion-row><ion-label color="negro"  stacked>ID:   {{lista.isbn}}</ion-label></ion-row>
                     <ion-row><ion-label color="negro" stacked>TITULO:   {{lista.titulo}}</ion-label></ion-row>
@@ -26,12 +14,10 @@
                     <ion-row><ion-label color="negro" stacked>TEMA:   {{lista.tema}}</ion-label></ion-row>
                     <ion-row><ion-label color="negro" stacked>EDITORIAL:   {{lista.editorial}}</ion-label></ion-row>
                     <ion-row><p ion-text color="negro">RESEÑA: {{list.resena}}</p></ion-row>   
-
                 </ion-col>
             </ion-row>
         </ion-list>
     </ion-grid>
-
     <form [formGroup]="myForm">
         <ion-grid>
             <ion-row nowrap class="forecast_container">
@@ -39,34 +25,23 @@
                 <p>NUMERO DE DIAS RESERVADOS</p>
                 <p>FECHA DE ENTREGA</p>
             </ion-row>
-            <ion-row nowrap class="forecast_container">
+            <ion-row>
                 <ion-col>  <p ion-text color="negro">{{fecha1}}</p></ion-col>
-                <ion-col>    
-                    <ion-select (ionChange)="calcular_dias()" formControlName="dias" cancelText="Cancelar" okText = "Aceptar"> 
-                        <ion-option value="1">1 dia</ion-option>
-                        <ion-option value="2">2 dias</ion-option>
-                      
+                <ion-col col-4>    
+                    <ion-select (ionChange)="calcular_dias()" formControlName="dias" cancelText="Cancelar" okText = "Aceptar"  placeholder="#"> 
+                        <ion-option value="1">1</ion-option>
+                        <ion-option value="2">2</ion-option>
                     </ion-select>
                     <ion-item *ngIf="myForm.get('dias').errors && myForm.get('dias').dirty">
                         <p color="danger" ion-text *ngIf="myForm.get('dias').hasError('required')">Este campo es requerido</p>
                     </ion-item>
                 </ion-col>
                 <ion-col>  <p>{{fecha2}}</p></ion-col>
-
             </ion-row>
-
-
         </ion-grid>
-
         <button ion-button full color="estado"  [disabled]="!myForm.valid" (click)="reservar()">Reservar</button>
-
-
     </form>
-
-
-
 </ion-content>
-
 <ion-footer>
     <ion-navbar>
         <img src="assets/imgs/abajo.png">

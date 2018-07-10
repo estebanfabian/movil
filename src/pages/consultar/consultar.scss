@@ -5,23 +5,26 @@
 }
 
 page-consultar {
-    
 
-     h6{
+
+    h6{
         color:#C12859;
         font-family: "LETRA_CABECERA";
     }
-    
-   p
+
+    p
     {
         font-weight: 900;
     }   
-    
+
     ion-label {
-        font-weight: 900;
-    }
+/*        //font-weight:900 ;
+       font-weight:1900 ;*/
+color: #000000;
+          }
     ion-input{
-        font-weight: 900;
+        font-weight:900;
+
     }
     ion-select{
         font-weight: 900;
@@ -29,22 +32,22 @@ page-consultar {
     ion-datetime{
         font-weight: 900;
     }
-
+    div{
+        font-weight: 500;
+        font-size: 110%;
+    }
 
     //Codigo del fondo
-   ion-content {
-    background-image: url("../assets/imgs/fondo_1.png");
-    background-size: cover;
-    background-position: center;
-}
-   
-.forecast_container{
+    ion-content {
+        background-image: url("../assets/imgs/fondo_1.png");
+        background-size: cover;
+        background-position: center;
+    }
+
+    .forecast_container{
         overflow-x: scroll!important;
         word-wrap: break-word;
-        
         font-size:0.8em;
         font-weight:500
-}
-     
-    
+    }
 }   

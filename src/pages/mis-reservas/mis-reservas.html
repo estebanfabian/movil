@@ -1,18 +1,10 @@
-
 <ion-header>
-
     <ion-navbar>
         <h6 align="left">Mis Reservas </h6>
     </ion-navbar>
-
 </ion-header>
-
-
 <ion-content padding>
-
-
     <ion-card *ngFor="let lista of tarje">
-
         <ion-item >
             <ion-avatar item-start>
                 <img src="{{lista.foto}}">
@@ -20,25 +12,18 @@
             <h2>{{lista.titulo}}</h2>
             <p># {{lista.isbn}}</p>
             <div *ngIf="lista.actividad== '1'" ><p>Reservado</p></div> 
-            <div *ngIf="lista.actividad== '2'" ><p>En préstamo</p></div> 
-              
+            <div *ngIf="lista.actividad== '2'" ><p>En préstamo</p></div>             
         </ion-item>
-
         <img src="{{lista.imagen}}" width="25" height="200"    >
-
         <ion-card-content>
             <p>{{lista.resena}}</p>
         </ion-card-content>
-
         <ion-row>
             <ion-col>
-
-
                 <ion-item>
                     <p>Dia reserva</p>
                     <p>{{lista.diaPrestamo}}</p>
                 </ion-item>
-
             </ion-col>
             <ion-col>
                 <ion-item>
@@ -52,13 +37,14 @@
                         <button ion-button icon-left clear small (click)="cancelar(lista.idPrestamo)">
                                 <div>Cancelar Reserva</div>
                         </button>
-                    </div>
-                    
+                    </div>                  
                 </ion-note>
             </ion-col>
         </ion-row>
-
     </ion-card>
-
-
 </ion-content>
+<ion-footer>
+    <ion-navbar>
+        <img src="assets/imgs/abajo.png">
+    </ion-navbar>
+</ion-footer>

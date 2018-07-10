@@ -1,19 +1,14 @@
 <ion-header>
-
     <ion-navbar>
         <h6 align="center">RESERVA DE LIBROS REPUBLICANA </h6>
-
-
     </ion-navbar>
-
 </ion-header>
 
 <ion-content padding>
     <div>
         <ion-item *ngFor="let list of info" text-center> 
             <p ion-text color="negro">{{list.nombre}}</p>
-            <img  src= "{{list.foto}}" width="50" (click)="listar()">
-           
+            <img  src= "{{list.foto}}" width="50" (click)="listar()">         
         </ion-item>
         <div *ngIf="ocultar">
             <ion-list text-right>
@@ -21,17 +16,12 @@
                     <ion-icon name="contacts" item-start></ion-icon>
                     Modificar Perfil
                 </button>
-
                 <button ion-item (click)="Ir_Home()">
                     <ion-icon name="log-out" item-start></ion-icon>
                    Cerrar Sesion
                 </button>
-
-
             </ion-list>
-
-        </div>
-        
+        </div>       
     </div>
     <button ion-button full (click)="consultar()">consultar</button>
         <button ion-button full (click)="Mis_Reservas()">Mis Reservas</button>

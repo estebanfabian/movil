@@ -5,8 +5,6 @@
         </ion-title>
     </ion-navbar>
 </ion-header>
-
-
 <ion-content padding>
     <form [formGroup]="formula">
         <ion-list>
@@ -26,12 +24,10 @@
                 <ion-label  color="negro" stacked>Correo:</ion-label>
                 <ion-input formControlName="emailPrincipal" type="email" placeholder="Correo"></ion-input>
             </ion-item>
-
             <ion-item *ngIf="formula.get('emailPrincipal').errors && formula.get('emailPrincipal').dirty">
                 <p color="danger" ion-text *ngIf="formula.get('emailPrincipal').hasError('required')">Este campo es requerido</p>
                 <p color="danger" ion-text *ngIf="formula.get('emailPrincipal').hasError('email')">Este correo no es válido</p>
             </ion-item>
-
         </ion-list>
         <div padding>
             <button ion-button full block  [disabled]="!formula.valid"  (click)="olvido()">Enviar</button>

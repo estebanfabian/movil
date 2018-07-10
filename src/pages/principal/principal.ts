@@ -4,7 +4,7 @@ import {ConsultarPage} from '../consultar/consultar';
 import {MisReservasPage} from '../mis-reservas/mis-reservas';
 import {HomePage} from '../home/home';
 import {ModificarPage} from '../modificar/modificar';
-
+import {MisMultasPage} from '../mis-multas/mis-multas';
 
 @IonicPage()
 @Component({
@@ -36,11 +36,11 @@ export class PrincipalPage {
     Ir_Home() {
         this.navCtrl.setRoot(HomePage);
     }
-    Multas(){
-        
+    Multas() {
+        this.navCtrl.push(MisMultasPage, {info: this.info});
     }
-    Modificar(){
-        this.navCtrl.push(ModificarPage ,{info: this.info});
+    Modificar() {
+        this.navCtrl.push(ModificarPage, {info: this.info});
     }
 }
 

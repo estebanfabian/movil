@@ -5,9 +5,6 @@
         </ion-title>
     </ion-navbar>
 </ion-header>
-
-
-
 <ion-content padding>
     <form [formGroup]="myForm">
         <ion-list>
@@ -21,7 +18,6 @@
                 <p color="danger" ion-text *ngIf="myForm.get('nombre').hasError('pattern')">Por favor escriba solo letras</p>
                 <p color="danger" ion-text *ngIf="myForm.get('nombre').hasError('minlength')">Por favor escriba mínimo 3 caracteres</p>
             </ion-item>
-
             <ion-item>
                 <ion-icon name="person" item-start></ion-icon>
                 <ion-label color="negro"stacked>Apellido:</ion-label>
@@ -32,10 +28,6 @@
                 <p color="danger" ion-text *ngIf="myForm.get('apellido').hasError('pattern')">Por favor escriba solo letras</p>
                 <p color="danger" ion-text *ngIf="myForm.get('apellido').hasError('minlength')">Por favor escriba mínimo 3 caracteres</p>
             </ion-item>
-
-
-
-
             <ion-item>
                 <ion-icon name="card" item-start></ion-icon>
                 <ion-label color="negro" stacked>Código:</ion-label>
@@ -58,7 +50,6 @@
                 <p color="danger" ion-text *ngIf="myForm.get('telefonoPrincipal').hasError('minlength')">Por favor escriba mínimo 7 caracteres</p>
                 <p color="danger" ion-text *ngIf="myForm.get('telefonoPrincipal').hasError('maxlength')">Por favor escriba máximo 20 caracteres</p>
             </ion-item>
-
             <ion-item>
                 <ion-icon name="home" item-start></ion-icon>
                 <ion-label color="negro" stacked>Dirección:</ion-label>
@@ -67,10 +58,6 @@
             <ion-item *ngIf="myForm.get('direccion').errors && myForm.get('direccion').dirty">
                 <p color="danger" ion-text *ngIf="myForm.get('direccion').hasError('required')">Este campo es requerido</p>
             </ion-item>
-
-
-
-
             <ion-item>
                 <ion-icon name="calendar" item-start></ion-icon>
                 <ion-label color="negro" stacked>Fecha de Nacimiento:</ion-label>
@@ -80,11 +67,6 @@
             <ion-item *ngIf="myForm.get('fechaNacimiento').errors && myForm.get('fechaNacimiento').dirty">
                 <p color="danger" ion-text *ngIf="myForm.get('fechaNacimiento').hasError('required')">Este campo es requerido</p>
             </ion-item>
-
-
-
-
-
             <ion-item>
                 <ion-icon name="contacts" item-start></ion-icon>
                 <ion-label color="negro" stacked>Sexo:</ion-label>
@@ -97,30 +79,24 @@
             <ion-item *ngIf="myForm.get('sexo').errors && myForm.get('sexo').dirty">
                 <p color="danger" ion-text *ngIf="myForm.get('sexo').hasError('required')">Este campo es requerido</p>
             </ion-item>
-
-
             <ion-item>
                 <ion-icon name="mail" item-start></ion-icon>
                 <ion-label color="negro" stacked>Correo:</ion-label>
                 <ion-input formControlName="emailPrincipal" type="email" placeholder="Correo"></ion-input>
             </ion-item>
-
             <ion-item *ngIf="myForm.get('emailPrincipal').errors && myForm.get('emailPrincipal').dirty">
                 <p color="danger" ion-text *ngIf="myForm.get('emailPrincipal').hasError('required')">Este campo es requerido</p>
                 <p color="danger" ion-text *ngIf="myForm.get('emailPrincipal').hasError('email')">Este correo no es válido</p>
             </ion-item>
-
             <ion-item>
                 <ion-icon name="eye-off" item-start></ion-icon>
                 <ion-label color="negro" stacked>Contraseña:</ion-label>
                 <ion-input formControlName="contrasena" type="password" placeholder="Contraseña"></ion-input>
             </ion-item>
-
             <ion-item *ngIf="myForm.get('contrasena').errors && myForm.get('contrasena').dirty">
                 <p color="danger" ion-text *ngIf="myForm.get('contrasena').hasError('required')">Este campo es requerido</p>
                 <p color="danger" ion-text *ngIf="myForm.get('contrasena').hasError('minlength')">Minimo 6 caracteres</p>
             </ion-item>  
-
             <ion-grid>
                 <ion-row>
                     <ion-item>
@@ -136,15 +112,9 @@
                     <img src= "{{foto}}" width="50">
                 </div>
             </ion-grid>
-
-
-
-
-
         </ion-list>
         <div padding>
             <button ion-button block type="submit" [disabled]="!myForm.valid" (click)="Insertar()">Registrar</button>
-            
         </div>
     </form>
 </ion-content>  
@@ -153,4 +123,3 @@
         <img src="assets/imgs/abajo.png">
     </ion-navbar>
 </ion-footer>
-

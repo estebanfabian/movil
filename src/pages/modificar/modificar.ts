@@ -41,9 +41,7 @@ export class ModificarPage {
             console.log(this.lista)
             for (var fech of this.lista) {
                 this.fechaNacimiento = fech.fechaNacimiento;
-            }
-           
-
+            }          
         }, err => {
             console.log(err);
         });
@@ -75,8 +73,6 @@ export class ModificarPage {
         this.camera.getPicture(options)
             .then(imageData => {
                 this.foto = `data:image/jpeg;base64,${imageData}`;
-
-
             })
             .catch(error => {
                 console.error(error);
@@ -94,11 +90,9 @@ export class ModificarPage {
         this.camera.getPicture(options)
             .then(imageData => {
                 this.foto = imageData;
-
             })
             .catch(error => {
                 console.error(error);
             });
     }
-
 }

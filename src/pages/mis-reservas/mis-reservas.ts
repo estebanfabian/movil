@@ -5,7 +5,6 @@ import {ToastController} from 'ionic-angular';
 import {PrincipalPage} from '../principal/principal';
 import {AlertController} from 'ionic-angular';
 
-
 @IonicPage()
 @Component({
     selector: 'page-mis-reservas',
@@ -26,29 +25,30 @@ export class MisReservasPage {
         for (var cod of this.info) {
             this.codigo = cod.codigo;
         }
+
         let infor = {
             codigo: this.codigo
         }
-
         this.respuesta = this.ConectServ.Traer_Tarje(infor);
         this.respuesta.subscribe(data => {
             this.ProcesarTabla(data);
         }, err => {
-            console.log(err)
-            this.presentToast("Error en el servidor.Contacte al administrador");
+             console.log(err);
+            //console.log();
+            //            this.presentToast(this.respuestas);
+            this.presentToast("Error servidor.Contacte al administrador");
         });
     }
 
     ProcesarTabla(listar) {
-
+        console.log("etra a listar");
+        console.log(listar);
         if (listar.length == 0) {
             this.presentToast("No hay libros reservados");
         } else {
             this.tarje = listar;
         }
     }
-
-
     cancelar(lista) {
 
         let alert = this.alertCtrl.create({
@@ -59,19 +59,14 @@ export class MisReservasPage {
                     text: 'Cancelar',
                     role: 'cancel',
                     handler: () => {
-
-
                     }
                 },
                 {
                     text: 'Aceptar',
                     handler: () => {
-
-
                         let infor = {
                             idPrestamo: lista
                         }
-
                         this.respuesta = this.ConectServ.Eliminar_reser(infor);
                         this.respuesta.subscribe(data => {
                             console.log(data);
@@ -82,10 +77,7 @@ export class MisReservasPage {
                                     duration: 3000,
                                     position: 'bottom'
                                 });
-
                                 toast.present();
-
-
                                 this.navCtrl.setRoot(PrincipalPage, {info: this.info});
                             }
                             else if (this.respuesta.sucess == "no") {
@@ -108,9 +100,6 @@ export class MisReservasPage {
             duration: 3000,
             position: 'bottom'
         });
-
         toast.present();
-
     }
 }
-

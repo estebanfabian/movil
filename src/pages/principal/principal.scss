@@ -5,25 +5,23 @@
 }
 
 page-principal {
-    
 
-     h6{
+
+    h6{
         color:#C12859;
         font-family: "LETRA_CABECERA";
     }
-    
-   p
+
+    p
     {
         font-weight: 900;
     }   
- 
+
 
     //Codigo del fondo
-   ion-content {
-    background-image: url("../assets/imgs/fondo_1.png");
-    background-size: cover;
-    background-position: center;
+    ion-content {
+        background-image: url("../assets/imgs/fondo_1.png");
+        background-size: cover;
+        background-position: center;
+    }
 }
-
-}
-

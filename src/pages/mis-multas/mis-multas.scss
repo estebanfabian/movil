@@ -1,26 +1,22 @@
-
 @font-face{
     font-family: "LETRA_CABECERA";
     font-size: 18px;
     src:url(../..//assets/fonts/SoccerLeague-Italic.ttf)
 }
-
-page-mis-reservas {
-    h6{
+  
+page-mis-multas {
+h6{
         color:#C12859;
         font-family: "LETRA_CABECERA";
     }
     ion-input{
         color:orange
     }
-
-    //Codigo del fondo
+    
+  //Codigo del fondo
     ion-content {
         background-image: url("../assets/imgs/fondo_1.png");
         background-size: cover;
         background-position: center;
-
     }
-
 }
-.item-md p {color: #000}
