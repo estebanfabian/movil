@@ -6,7 +6,7 @@ export class ConectarProvider {
     constructor(public http: HttpClient) {
     }
     url = 'http://192.168.0.15/biblioteca/'// 
-    //url = 'http://192.168.0.11/biblioteca/'// 
+   // url = 'http://192.168.0.11/biblioteca/'// 
     // url = 'http://192.168.0.23/BibliotecaClienteServidor/'// casa estemen
     // url = 'http://192.168.0.21/'// servi
     options = {
@@ -68,7 +68,6 @@ export class ConectarProvider {
     }
     Traer_Tarje(dataJSON) {
         var url = this.url + 'Tarjeta';
-        console.log(this.http.post(url, JSON.stringify(dataJSON), this.options));
         return this.http.post(url, JSON.stringify(dataJSON), this.options)
     }
     Eliminar_reser(dataJSON) {
@@ -81,6 +80,10 @@ export class ConectarProvider {
     }
     mostrar_usuario(dataJSON) {
         var url = this.url + 'Most_usuario';
+        return this.http.post(url, JSON.stringify(dataJSON), this.options)
+    }
+        Mis_Multas(dataJSON) {
+        var url = this.url + 'multas';
         return this.http.post(url, JSON.stringify(dataJSON), this.options)
     }
 }

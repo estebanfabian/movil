@@ -1,25 +1,62 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the MisMultasPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {ConectarProvider} from '../../providers/conectar/conectar';
+import {ToastController} from 'ionic-angular';
+import {AlertController} from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-mis-multas',
-  templateUrl: 'mis-multas.html',
+    selector: 'page-mis-multas',
+    templateUrl: 'mis-multas.html',
 })
 export class MisMultasPage {
+    info;
+    respuesta;
+    tarje;
+    codigo;
+    id;
+    constructor(
+        public navCtrl: NavController,
+        public navParams: NavParams,
+        public ConectServ: ConectarProvider,
+        public toastCtrl: ToastController,
+        public alertCtrl: AlertController) {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+        this.info = navParams.get("info")
+        for (var cod of this.info) {
+            this.codigo = cod.codigo;
+        }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MisMultasPage');
-  }
+        let infor = {
+            codigo: this.codigo
+        }
+        this.respuesta = this.ConectServ.Mis_Multas(infor);
+        this.respuesta.subscribe(data => {
+            this.ProcesarTabla(data);
+        }, err => {
+            console.log(err);
+            this.presentToast("Error servidor.Contacte al administrador");
+        });
+    }
+    
+        ProcesarTabla(listar) {
+        console.log(listar);
+        if (listar.length == 0) {
+            this.presentToast("No hay libros reservados");
+            console.log("si");
+        } else {
+            this.tarje = listar;
+                      console.log("no");
+        }
+    }
 
+    presentToast(msg) {
+        let toast = this.toastCtrl.create({
+            message: msg,
+            duration: 3000,
+            position: 'bottom'
+        });
+        toast.present();
+    }
+  
 }

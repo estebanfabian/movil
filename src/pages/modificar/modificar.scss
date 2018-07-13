@@ -1,22 +1,19 @@
-
 @font-face{
     font-family: "LETRA_CABECERA";
     font-size: 18px;
     src:url(../..//assets/fonts/SoccerLeague-Italic.ttf)
 }
-
-
 page-modificar {
     h6{
         color:#C12859;
         font-family: "LETRA_CABECERA";
     }
     ion-input{
-        color:orange
+        color:black
     }
 
     ion-content {
-        background-image: url("../assets/imgs/fondo_1.jpg");;
+        background-image: url("../assets/imgs/fondo_1.png");
         background-size: cover;
         background-position: center;
     }

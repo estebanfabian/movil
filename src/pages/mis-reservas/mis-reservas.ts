@@ -16,7 +16,8 @@ export class MisReservasPage {
     tarje;
     codigo;
     id;
-    constructor(public navCtrl: NavController,
+    constructor(
+        public navCtrl: NavController,
         public navParams: NavParams,
         public ConectServ: ConectarProvider,
         public toastCtrl: ToastController,
@@ -33,16 +34,12 @@ export class MisReservasPage {
         this.respuesta.subscribe(data => {
             this.ProcesarTabla(data);
         }, err => {
-             console.log(err);
-            //console.log();
-            //            this.presentToast(this.respuestas);
+            console.log(err);
             this.presentToast("Error servidor.Contacte al administrador");
         });
     }
 
     ProcesarTabla(listar) {
-        console.log("etra a listar");
-        console.log(listar);
         if (listar.length == 0) {
             this.presentToast("No hay libros reservados");
         } else {
