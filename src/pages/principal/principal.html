@@ -3,7 +3,6 @@
         <h6 align="center">RESERVA DE LIBROS REPUBLICANA </h6>
     </ion-navbar>
 </ion-header>
-
 <ion-content padding>
     <div>
         <ion-item *ngFor="let list of info" text-center> 
@@ -13,19 +12,23 @@
         <div *ngIf="ocultar">
             <ion-list text-right>
                 <button ion-item (click)="Modificar()">
-                    <ion-icon name="contacts" item-start></ion-icon>
+                        <ion-icon name="contacts" item-start></ion-icon>
                     Modificar Perfil
                 </button>
+                 <button ion-item (click)="Modificar()">
+                        <ion-icon name="contacts" item-start></ion-icon>
+                    Cambiar contraseña
+                </button>
                 <button ion-item (click)="Ir_Home()">
-                    <ion-icon name="log-out" item-start></ion-icon>
-                   Cerrar Sesion
+                        <ion-icon name="log-out" item-start></ion-icon>
+                    Cerrar Sesion
                 </button>
             </ion-list>
         </div>       
     </div>
     <button ion-button full (click)="consultar()">consultar</button>
-        <button ion-button full (click)="Mis_Reservas()">Mis Reservas</button>
-        <button ion-button full (click)="Multas()">Multas</button>
+    <button ion-button full (click)="Mis_Reservas()">Mis Reservas</button>
+    <button ion-button full (click)="Multas()">Multas</button>
 
 </ion-content>
 <ion-footer>

@@ -4,7 +4,6 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {RegistroPage} from '../registro/registro'
 import {PrincipalPage} from '../principal/principal'
 import {OlvidarContraPage} from '../olvidar-contra/olvidar-contra'
-
 import {ToastController} from 'ionic-angular';
 import {ConectarProvider} from '../../providers/conectar/conectar';
 
@@ -26,7 +25,6 @@ export class HomePage {
         this.form = this.ValidarForm();
     }
 
-    
     private ValidarForm() {
         return this.formBuilder.group({
             codigo: ['', [Validators.required, Validators.pattern('[0-9]*'), Validators.minLength(6), Validators.maxLength(10)]],
@@ -34,18 +32,17 @@ export class HomePage {
         });
     }
 
-
     ValidarUsuario() {
 
         this.respuesta = this.ConectServ.Validar_user(this.form.value);
         this.respuesta.subscribe(data => {
             this.info = data;
+            console.log(data);
             if (this.info.length == 1) {
                 let toast = this.toastCtrl.create({
                     message: 'Bienvenido señor usuario!!',
                     duration: 5000,
                     position: 'bottom'
-
                 });
                 toast.present();
                 this.navCtrl.setRoot(PrincipalPage, {
@@ -57,24 +54,19 @@ export class HomePage {
                     message: 'Error! El codigo o la contraseña estan mal escritas',
                     duration: 5000,
                     position: 'bottom'
-
                 });
                 toast.present();
             }
-
-
         }, err => {
             console.log(JSON.stringify(err));
             let toast = this.toastCtrl.create({
                 message: 'Error! Consulte al administrador',
                 duration: 5000,
                 position: 'bottom'
-
             });
             toast.present();
         });
     }
-
 
     Ir_Registro() {
         this.navCtrl.push(RegistroPage);
@@ -83,7 +75,4 @@ export class HomePage {
     Ir_Contra() {
         this.navCtrl.push(OlvidarContraPage);
     }
-   
-    
-
 }

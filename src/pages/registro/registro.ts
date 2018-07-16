@@ -32,8 +32,6 @@ export class RegistroPage {
         this.myForm = this.ValidarForm();
     }
 
-
-
     private ValidarForm() {
         return this.formBuilder.group({
             nombre: ['', [Validators.required, Validators.pattern('[a-zA-Zñ]*'), Validators.minLength(3)]],
@@ -48,7 +46,6 @@ export class RegistroPage {
 
         });
     }
-
 
     Insertar() {
         let info = {
@@ -112,7 +109,6 @@ export class RegistroPage {
         });
 
     }
-
 
     ActivarCAM() {
         let options: CameraOptions = {

@@ -1,4 +1,4 @@
-    import {Component} from '@angular/core';
+import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {ConectarProvider} from '../../providers/conectar/conectar';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -23,11 +23,10 @@ export class ConsultarPage {
         public ConectServ: ConectarProvider,
         public formBuilder: FormBuilder,
         public toastCtrl: ToastController) {
-         this.formu = this.ValidarForm();
-           this.info = navParams.get("info");
+        this.formu = this.ValidarForm();
+        this.info = navParams.get("info");
     }
 
-    
     private ValidarForm() {
         return this.formBuilder.group({
             Buscar: ['', [Validators.required]],
@@ -35,17 +34,17 @@ export class ConsultarPage {
         });
     }
 
-
-
-
     Datos_libro() {
 
         if (this.formu.value.Buscar == "Id") {
             this.respuesta = this.ConectServ.Traer_Id(this.formu.value);
+            console.log(this.formu.value);
             this.respuesta.subscribe(data => {
                 this.ProcesarTabla(data);
+                console.log(data);
             }, err => {
                 this.presentToast("Error en el servidor.Contacte al administrador");
+
             });
         }
 
@@ -90,21 +89,17 @@ export class ConsultarPage {
                 this.presentToast("Error en el servidor.Contacte al administrador");
             });
         }
-
-
     }
 
     ProcesarTabla(listar) {
-        
+
         if (listar.length == 0) {
             this.presentToast("No hay Valores");
             this.ocultar = false;
-
         } else {
             this.tabla = listar;
             this.ocultar = true;
         }
-
     }
     presentToast(msg) {
         let toast = this.toastCtrl.create({
@@ -112,17 +107,14 @@ export class ConsultarPage {
             duration: 3000,
             position: 'bottom'
         });
-
         toast.present();
-        
+
     }
 
     reservar(lista) {
-        
-
         this.navCtrl.push(ReservaPage, {
-            lista: lista,info: this.info});
+            lista: lista, info: this.info
+        });
     }
 
 }
-

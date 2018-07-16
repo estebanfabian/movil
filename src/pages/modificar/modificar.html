@@ -9,14 +9,16 @@
             <ion-grid>
                 <ion-row>
                     <ion-col>
-                        <img src="{{usuario.foto}}" width="100" >
+                        <img src="{{foto}}" width="100" >
                     </ion-col>
                     <ion-col>
-                        <button ion-button color="light" clear  (click)="h">Tomar Foto</button>
-                        <button ion-button color="light" clear  (click)="h">Subir Imagen</button>
+                      <ion-col col-6><button ion-button color="primary" clear  (click)="ActivarCAM()">Tomar Foto</button></ion-col>
+                    <ion-col col-6><button ion-button color="primary"clear  (click)="BuscarSD()">Subir Imagen</button> </ion-col>
+              
                     </ion-col>
                 </ion-row>
             </ion-grid>
+
 
             <ion-item>
                 <ion-icon name="card" item-start></ion-icon>
@@ -67,13 +69,7 @@
                 <p color="danger" ion-text *ngIf="myForm.get('fechaNacimiento').hasError('required')">Este campo es requerido</p>
             </ion-item>
 
-            <ion-item>
-                <ion-icon name="contacts" item-start></ion-icon>
-                <ion-label stacked>Genero:</ion-label>
 
-                <ion-input formControlName="sexo" type="text" </ion-input>
-
-            </ion-item>
 
             <ion-item>
                 <ion-icon name="mail" item-start></ion-icon>
@@ -84,16 +80,9 @@
                 <p color="danger" ion-text *ngIf="myForm.get('emailPrincipal').hasError('required')">Este campo es requerido</p>
                 <p color="danger" ion-text *ngIf="myForm.get('emailPrincipal').hasError('email')">Este correo no es válido</p>
             </ion-item>
-
-            <ion-item>
-                <ion-icon name="eye-off" item-start></ion-icon>
-                <ion-label stacked>Contraseña:</ion-label>
-                <ion-input formControlName="contrasena" type="text" placeholder="Contraseña" value="{{usuario.contrasena}}"></ion-input>
-            </ion-item>
-            <ion-item *ngIf="myForm.get('contrasena').errors && myForm.get('contrasena').dirty">
-                <p color="danger" ion-text *ngIf="myForm.get('contrasena').hasError('required')">Este campo es requerido</p>
-                <p color="danger" ion-text *ngIf="myForm.get('contrasena').hasError('minlength')">Minimo 6 caracteres</p>
-            </ion-item>  
+            <div padding>
+                <button ion-button block type="submit" [disabled]="!myForm.valid" (click)="Modificar()">Actualizar</button>
+            </div>       
         </div>
     </form>
 </ion-content>

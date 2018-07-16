@@ -20,14 +20,13 @@ export class PrincipalPage {
         public navCtrl: NavController,
         public navParams: NavParams) {
         this.info = navParams.get("info");
+        console.log(this.info);
     }
     listar() {
-
         this.ocultar = !this.ocultar;
-    }
-
+       }
+    
     consultar() {
-
         this.navCtrl.push(ConsultarPage, {info: this.info});
     }
     Mis_Reservas() {

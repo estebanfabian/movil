@@ -6,9 +6,8 @@ export class ConectarProvider {
     constructor(public http: HttpClient) {
     }
     url = 'http://192.168.0.15/biblioteca/'// 
-   // url = 'http://192.168.0.11/biblioteca/'// 
-    // url = 'http://192.168.0.23/BibliotecaClienteServidor/'// casa estemen
-    // url = 'http://192.168.0.21/'// servi
+    //url = 'http://192.168.0.11/biblioteca/'// 
+    //url = 'http://192.168.0.21/'// servi
     options = {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -23,12 +22,13 @@ export class ConectarProvider {
         return this.http.post(url, JSON.stringify(dataJSON), this.options)
     }
     Traer_Id(dataJSON) {
+
         var url = this.url + 'tablaXid';
         return this.http.post(url, JSON.stringify(dataJSON), this.options)
     }
-    Traer_Titulo(dataJSON) {
+    Traer_Titulo(dataJSON) { 
         var url = this.url + 'tablaXtitulo';
-        return this.http.post(url, JSON.stringify(dataJSON), this.options)
+           return this.http.post(url, JSON.stringify(dataJSON), this.options)
     }
     Traer_Autor(dataJSON) {
         var url = this.url + 'tablaXautor';
@@ -82,7 +82,7 @@ export class ConectarProvider {
         var url = this.url + 'Most_usuario';
         return this.http.post(url, JSON.stringify(dataJSON), this.options)
     }
-        Mis_Multas(dataJSON) {
+    Mis_Multas(dataJSON) {
         var url = this.url + 'multas';
         return this.http.post(url, JSON.stringify(dataJSON), this.options)
     }
