@@ -1,14 +1,13 @@
 <ion-header>
     <ion-navbar>
-        <h6 align="left">Mis Reservas </h6>
+        <h6 align="left">Mis multas </h6>
     </ion-navbar>
 </ion-header><ion-content padding>
     <ion-card *ngFor="let lista of tarje">
         <ion-item >
             <ion-avatar item-start>
                 <img src="{{lista.foto}}">
-            </ion-avatar>
-                 
+            </ion-avatar>                 
         </ion-item>
         <br>
         <div *ngIf="lista.multa> '0'" >

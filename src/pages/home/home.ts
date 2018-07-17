@@ -12,11 +12,9 @@ import {ConectarProvider} from '../../providers/conectar/conectar';
     templateUrl: 'home.html'
 })
 export class HomePage {
-
     form: FormGroup;
     respuesta;
     info;
-
     constructor(
         public navCtrl: NavController,
         public formBuilder: FormBuilder,
@@ -24,55 +22,42 @@ export class HomePage {
         private toastCtrl: ToastController) {
         this.form = this.ValidarForm();
     }
-
     private ValidarForm() {
         return this.formBuilder.group({
             codigo: ['', [Validators.required, Validators.pattern('[0-9]*'), Validators.minLength(6), Validators.maxLength(10)]],
             contrasena: ['', [Validators.required, Validators.minLength(6)]],
         });
     }
-
     ValidarUsuario() {
-
         this.respuesta = this.ConectServ.Validar_user(this.form.value);
         this.respuesta.subscribe(data => {
             this.info = data;
-            console.log(data);
             if (this.info.length == 1) {
-                let toast = this.toastCtrl.create({
-                    message: 'Bienvenido señor usuario!!',
-                    duration: 5000,
-                    position: 'bottom'
-                });
-                toast.present();
+                this.mensaje("Bienvenido señor usuario!!");
                 this.navCtrl.setRoot(PrincipalPage, {
                     info: this.info
                 });
             }
-            else if (this.info.length == 0) {
-                let toast = this.toastCtrl.create({
-                    message: 'Error! El codigo o la contraseña estan mal escritas',
-                    duration: 5000,
-                    position: 'bottom'
-                });
-                toast.present();
+            else {
+                this.mensaje("Error! El codigo o la contraseña estan mal escritas");
+                this.form.reset()
             }
         }, err => {
-            console.log(JSON.stringify(err));
-            let toast = this.toastCtrl.create({
-                message: 'Error! Consulte al administrador',
-                duration: 5000,
-                position: 'bottom'
-            });
-            toast.present();
+            this.mensaje("Error Consulte al administrador");
         });
     }
-
     Ir_Registro() {
         this.navCtrl.push(RegistroPage);
     }
-
     Ir_Contra() {
         this.navCtrl.push(OlvidarContraPage);
+    }
+    mensaje(mensaje) {
+        let toast = this.toastCtrl.create({
+            message: mensaje,
+            duration: 5000,
+            position: 'bottom'
+        });
+        toast.present();
     }
 }

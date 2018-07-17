@@ -21,12 +21,10 @@ export class MisMultasPage {
         public ConectServ: ConectarProvider,
         public toastCtrl: ToastController,
         public alertCtrl: AlertController) {
-
         this.info = navParams.get("info")
         for (var cod of this.info) {
             this.codigo = cod.codigo;
         }
-
         let infor = {
             codigo: this.codigo
         }
@@ -34,22 +32,17 @@ export class MisMultasPage {
         this.respuesta.subscribe(data => {
             this.ProcesarTabla(data);
         }, err => {
-            console.log(err);
             this.presentToast("Error servidor.Contacte al administrador");
         });
     }
-    
-        ProcesarTabla(listar) {
-        console.log(listar);
+    ProcesarTabla(listar) {
+
         if (listar.length == 0) {
             this.presentToast("No hay libros reservados");
-            console.log("si");
         } else {
             this.tarje = listar;
-                      console.log("no");
         }
     }
-
     presentToast(msg) {
         let toast = this.toastCtrl.create({
             message: msg,
@@ -58,5 +51,4 @@ export class MisMultasPage {
         });
         toast.present();
     }
-  
 }

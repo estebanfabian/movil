@@ -14,31 +14,24 @@
                     <ion-col>
                       <ion-col col-6><button ion-button color="primary" clear  (click)="ActivarCAM()">Tomar Foto</button></ion-col>
                     <ion-col col-6><button ion-button color="primary"clear  (click)="BuscarSD()">Subir Imagen</button> </ion-col>
-              
                     </ion-col>
                 </ion-row>
             </ion-grid>
-
-
             <ion-item>
                 <ion-icon name="card" item-start></ion-icon>
                 <ion-label stacked>Código:</ion-label>
                 <ion-input formControlName="codigo" type="number" placeholder="Código" value="{{usuario.codigo}}" readonly></ion-input>
             </ion-item>            
-
             <ion-item>
                 <ion-icon name="person" item-start></ion-icon>
                 <ion-label stacked>Nombre:</ion-label>
                 <ion-input formControlName="nombre" type="text" placeholder="Nombre" value="{{usuario.nombre}}" readonly ></ion-input>
             </ion-item>
-
             <ion-item>
                 <ion-icon name="person" item-start></ion-icon>
                 <ion-label stacked>Apellido:</ion-label>
                 <ion-input formControlName="apellido" type="text" placeholder="Apellido" value="{{usuario.apellido}}" readonly></ion-input>
             </ion-item>
-
-
             <ion-item>
                 <ion-icon name="call" item-start></ion-icon>
                 <ion-label stacked>Télefono:</ion-label>
@@ -49,7 +42,6 @@
                 <p color="danger" ion-text *ngIf="myForm.get('telefonoPrincipal').hasError('minlength')">Por favor escriba mínimo 7 caracteres</p>
                 <p color="danger" ion-text *ngIf="myForm.get('telefonoPrincipal').hasError('maxlength')">Por favor escriba máximo 20 caracteres</p>
             </ion-item>
-
             <ion-item>
                 <ion-icon name="home" item-start></ion-icon>
                 <ion-label stacked>Dirección:</ion-label>
@@ -58,7 +50,6 @@
             <ion-item *ngIf="myForm.get('direccion').errors && myForm.get('direccion').dirty">
                 <p color="danger" ion-text *ngIf="myForm.get('direccion').hasError('required')">Este campo es requerido</p>
             </ion-item>
-
             <ion-item>
                 <ion-icon name="calendar" item-start></ion-icon>
                 <ion-label stacked>Fecha de Nacimiento:</ion-label>
@@ -68,9 +59,6 @@
             <ion-item *ngIf="myForm.get('fechaNacimiento').errors && myForm.get('fechaNacimiento').dirty">
                 <p color="danger" ion-text *ngIf="myForm.get('fechaNacimiento').hasError('required')">Este campo es requerido</p>
             </ion-item>
-
-
-
             <ion-item>
                 <ion-icon name="mail" item-start></ion-icon>
                 <ion-label stacked>Correo:</ion-label>

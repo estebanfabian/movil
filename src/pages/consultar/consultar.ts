@@ -5,7 +5,6 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ToastController} from 'ionic-angular';
 import {ReservaPage} from '../reserva/reserva';
 
-
 @IonicPage()
 @Component({
     selector: 'page-consultar',
@@ -36,65 +35,39 @@ export class ConsultarPage {
 
     Datos_libro() {
 
-        if (this.formu.value.Buscar == "Id") {
-            this.respuesta = this.ConectServ.Traer_Id(this.formu.value);
-            console.log(this.formu.value);
-            this.respuesta.subscribe(data => {
-                this.ProcesarTabla(data);
-                console.log(data);
-            }, err => {
-                this.presentToast("Error en el servidor.Contacte al administrador");
-
-            });
-        }
-
-        else if (this.formu.value.Buscar == "Tit") {
-            this.respuesta = this.ConectServ.Traer_Titulo(this.formu.value);
-            this.respuesta.subscribe(data => {
-                this.ProcesarTabla(data);
-            }, err => {
-                this.presentToast("Error en el servidor.Contacte al administrador");
-            });
-        }
-        else if (this.formu.value.Buscar == "Aut") {
-            this.respuesta = this.ConectServ.Traer_Autor(this.formu.value);
-            this.respuesta.subscribe(data => {
-                this.ProcesarTabla(data);
-            }, err => {
-                this.presentToast("Error en el servidor.Contacte al administrador");
-            });
-        }
-        else if (this.formu.value.Buscar == "Tema") {
-            this.respuesta = this.ConectServ.Traer_Tema(this.formu.value);
-            this.respuesta.subscribe(data => {
-                this.ProcesarTabla(data);
-            }, err => {
-                this.presentToast("Error en el servidor.Contacte al administrador");
-            });;
-        }
-        else if (this.formu.value.Buscar == "Edit") {
-            this.respuesta = this.ConectServ.Traer_Editorial(this.formu.value);
-            this.respuesta.subscribe(data => {
-                this.ProcesarTabla(data);
-            }, err => {
-                this.presentToast("Error en el servidor.Contacte al administrador");
-            });
-        }
-        else if (this.formu.value.Buscar == "Facu") {
-            this.respuesta = this.ConectServ.Traer_Facultad(this.formu.value);
-            this.respuesta.subscribe(data => {
-                this.ProcesarTabla(data);
-
-            }, err => {
-                this.presentToast("Error en el servidor.Contacte al administrador");
-            });
+        switch (this.formu.value.Buscar) {
+            case "Id": {
+                this.respuesta = this.ConectServ.Traer_Id(this.formu.value);
+                this.error(this.respuesta);
+                break;
+            } case "Tit": {
+                this.respuesta = this.ConectServ.Traer_Titulo(this.formu.value);
+                this.error(this.respuesta);
+                break;
+            } case "Aut": {
+                this.respuesta = this.ConectServ.Traer_Autor(this.formu.value);
+                this.error(this.respuesta);
+                break;
+            } case "Tema": {
+                this.respuesta = this.ConectServ.Traer_Tema(this.formu.value);
+                this.error(this.respuesta);;
+                break;
+            } case "Edit": {
+                this.respuesta = this.ConectServ.Traer_Editorial(this.formu.value);
+                this.error(this.respuesta);
+                break;
+            } case "Facu": {
+                this.respuesta = this.ConectServ.Traer_Facultad(this.formu.value);
+                this.error(this.respuesta);
+                break;
+            }
         }
     }
 
     ProcesarTabla(listar) {
 
         if (listar.length == 0) {
-            this.presentToast("No hay Valores");
+            this.presentToast("No hay libros registrados");
             this.ocultar = false;
         } else {
             this.tabla = listar;
@@ -108,7 +81,6 @@ export class ConsultarPage {
             position: 'bottom'
         });
         toast.present();
-
     }
 
     reservar(lista) {
@@ -116,5 +88,11 @@ export class ConsultarPage {
             lista: lista, info: this.info
         });
     }
-
+    error(respuesta) {
+        this.respuesta.subscribe(data => {
+            this.ProcesarTabla(data);
+        }, err => {
+            this.presentToast("Error en el servidor Contacte al administrador");
+        });
+    }
 }

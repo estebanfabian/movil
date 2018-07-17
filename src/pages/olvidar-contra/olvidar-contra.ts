@@ -12,61 +12,42 @@ import {HomePage} from '../home/home';
 })
 export class OlvidarContraPage {
     formula: FormGroup;
-     respuesta;
+    respuesta;
     constructor(
-        public navCtrl: NavController, 
-        public navParams: NavParams, 
+        public navCtrl: NavController,
+        public navParams: NavParams,
         public ConectServ: ConectarProvider,
-        public formBuilder: FormBuilder ,
-        private toastCtrl: ToastController) 
-        {
-            this.formula = this.ValidarForm();
-        }
-
+        public formBuilder: FormBuilder,
+        private toastCtrl: ToastController) {
+        this.formula = this.ValidarForm();
+    }
     private ValidarForm() {
         return this.formBuilder.group({
             codigo: ['', [Validators.required, Validators.pattern('[0-9]*'), Validators.minLength(6), Validators.maxLength(20)]],
             emailPrincipal: ['', [Validators.required, Validators.email]],
         });
     }
-   
+
     olvido() {
         this.respuesta = this.ConectServ.Olvido_Contra(this.formula.value);
         this.respuesta.subscribe(data => {
-            
             if (data == "ok") {
-                let toast = this.toastCtrl.create({
-                    message: 'Se ha enviado a su correo registarado la contraseña',
-                    duration: 5000,
-                    position: 'bottom'
-
-                });
-                toast.present();
+                this.mensaje("Se ha enviado a su correo registarado la contraseña");
                 this.navCtrl.setRoot(HomePage);
             }
-            else if (data == "no") {
-                let toast = this.toastCtrl.create({
-                    message: 'Error,el codigo o el correo no coinciden',
-                    duration: 5000,
-                    position: 'bottom'
-
-                });
-                toast.present();
+            else {
+                this.mensaje("Error,el codigo o el correo no coinciden");
             }
-
         }, err => {
-            
-            console.error(err);
-                let toast = this.toastCtrl.create({
-
-                    message: 'Error consulte al administrador',
-                    duration: 5000,
-                    position: 'bottom'
-
-                });
-                toast.present();
-            }
-    );
+            this.mensaje("Error consulte al administrador");
+        });
+    }
+    mensaje(mensaje) {
+        let toast = this.toastCtrl.create({
+            message: mensaje,
+            duration: 5000,
+            position: 'bottom'
+        });
+        toast.present();
     }
 }
-

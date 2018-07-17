@@ -18,6 +18,7 @@ export class ConectarProvider {
         return this.http.post(url, JSON.stringify(dataJSON), this.options)
     }
     Validar_user(dataJSON) {
+        console.log("entra");
         var url = this.url + 'Validar';
         return this.http.post(url, JSON.stringify(dataJSON), this.options)
     }
@@ -26,9 +27,9 @@ export class ConectarProvider {
         var url = this.url + 'tablaXid';
         return this.http.post(url, JSON.stringify(dataJSON), this.options)
     }
-    Traer_Titulo(dataJSON) { 
+    Traer_Titulo(dataJSON) {
         var url = this.url + 'tablaXtitulo';
-           return this.http.post(url, JSON.stringify(dataJSON), this.options)
+        return this.http.post(url, JSON.stringify(dataJSON), this.options)
     }
     Traer_Autor(dataJSON) {
         var url = this.url + 'tablaXautor';
@@ -84,6 +85,11 @@ export class ConectarProvider {
     }
     Mis_Multas(dataJSON) {
         var url = this.url + 'multas';
+        return this.http.post(url, JSON.stringify(dataJSON), this.options)
+    }
+    Cambio_Clave(dataJSON) {
+
+        var url = this.url + 'CambioClave';
         return this.http.post(url, JSON.stringify(dataJSON), this.options)
     }
 }

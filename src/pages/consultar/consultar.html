@@ -57,7 +57,6 @@
                         <ion-col col-5>{{lista.tema}}</ion-col>
                         <ion-col col-5>{{lista.editorial}}</ion-col>
                         <ion-col col-5>{{lista.facultad}}</ion-col>
-                        <ion-col col-5>{{lista.estado}}</ion-col>
                         <div *ngIf="lista.estado== 'reservado'" >  
                             <ion-col col-5> <button ion-button small color="danger"[disabled]="lista.estado=='reservado'">Reservado</button></ion-col>
                         </div>

@@ -49,17 +49,12 @@ export class ModificarPage {
         }, err => {
             console.log(err);
         });
-
     }
 
     private ValidarForm() {
         return this.formBuilder.group({
-            nombre: ['', [Validators.required, Validators.pattern('[a-zA-Zñ]*'), Validators.minLength(3)]],
-            apellido: ['', [Validators.required, Validators.pattern('[a-zA-Zñ]*'), Validators.minLength(3)]],
-            codigo: ['', [Validators.required, Validators.pattern('[0-9]*'), Validators.minLength(6), Validators.maxLength(10)]],
             telefonoPrincipal: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(20)]],
             direccion: ['', [Validators.required]],
-            fechaNacimiento: [this.fechaNacimiento, [Validators.required]],
             emailPrincipal: ['', [Validators.required, Validators.email]],
         });
     }
@@ -77,7 +72,7 @@ export class ModificarPage {
                 this.cambio = 0;
             })
             .catch(error => {
-                console.error(error);
+                this.mensaje('Error al activar la camara');
             });
     }
 
@@ -95,7 +90,7 @@ export class ModificarPage {
                 this.cambio = 0;
             })
             .catch(error => {
-                console.error(error);
+                this.mensaje('Erro al carga imagen de la SD');
             });
     }
 
@@ -105,7 +100,6 @@ export class ModificarPage {
             content: "Actualizando su informacion..."
         });
         loader.present();
-        console.log(this.cambio);
         if (this.cambio == 0) {
             const fileTransfer: FileTransferObject = this.transfer.create();
             var random = Math.floor(Math.random() * 1000000);
@@ -128,60 +122,25 @@ export class ModificarPage {
 
                     this.respuesta = this.ConectServ.Actualizar_Foto(datos);
                     this.respuesta.subscribe(data => {
-
                         loader.dismiss();
-                        let toast = this.toastCtrl.create({
-                            message: 'El usuario ha sido registrado Satisfactoriamente',
-                            duration: 5000,
-                            position: 'bottom'
-                        });
-                        let ejemplo = JSON.stringify(datos);
-                        this.info = ejemplo;
-                        console.log(ejemplo);
-                        toast.present();
-                        this.navCtrl.setRoot(PrincipalPage, {
-                            info: this.info
-                        });
+                        this.mensaje('Su información se ha Actualizado satisfactoriamente');
+                        this.paginaPrincipal(datos);
+
                     }, (err) => {
                         loader.dismiss();
                     });
                 });
         } else {
-
             let info = {
                 codigo: this.myForm.value.codigo,
                 nombre: this.nombre,
                 foto: this.foto
             }
-     
-            
-            let info1 = {
-                0: info
-                        }
-            
-            var pluginArrayArg = new Array();
-            pluginArrayArg.push(info);
-            var myString = JSON.stringify(pluginArrayArg);
-            
-            
-            let json = Object.assign({}, info);
-            let ejemplo = JSON.stringify(info);
-            this.info = info1;
             loader.dismiss();
-            let toast = this.toastCtrl.create({
-                message: 'El usuario ha sido registrado Satisfactoriamente',
-                duration: 5000,
-                position: 'bottom'
-            });
-            console.log(info1);
-            toast.present();
-            this.navCtrl.setRoot(PrincipalPage, {
-                info: this.info
-            });
+            this.mensaje('Su información se ha Actualizado satisfactoriamente');
+            this.paginaPrincipal(info);
         }
-
     }
-
     Modificar() {
         let info = {
             codigo: this.myForm.value.codigo,
@@ -190,45 +149,41 @@ export class ModificarPage {
             emailPrincipal: this.myForm.value.emailPrincipal,
             foto: this.foto
         }
-
         this.respuesta = this.ConectServ.mod_usuario(info);
         this.respuesta.subscribe(data => {
             this.respuesta = data;
             if (this.respuesta.sucess == "ok") {
                 if (info.foto == "assets/imgs/icono_foto.png") {
-                    let toast = this.toastCtrl.create({
-                        message: 'El usuario ha sido registrado Satisfactoriamente',
-                        duration: 5000,
-                        position: 'bottom'
-                    });
-                    toast.present();
-                    let ejemplo = JSON.stringify(info);
-                    
-                    this.info = ejemplo;
-                    this.navCtrl.setRoot(PrincipalPage, {
-                        info: this.info
-                    });
+                    this.mensaje('Su información se ha Actualizado satisfactoriamente');
+                    this.paginaPrincipal(info);
                 }
                 else {
                     this.SubirSer();
                 }
             }
-            else if (this.respuesta.sucess == "no") {
-                let toast = this.toastCtrl.create({
-                    message: 'El usuario no se ha podido registrar en nuestras base de datos',
-                    duration: 5000,
-                    position: 'bottom'
-                });
-                toast.present();
+            else {
+                this.mensaje('El usuario no se ha podido registrar en nuestras base de datos');
             }
         }, err => {
-            console.error(err);
-            let toast = this.toastCtrl.create({
-                message: 'Error consulte al administrador',
-                duration: 5000,
-                position: 'bottom'
-            });
-            toast.present();
+            this.mensaje('Error consulte al administrador');
+        });
+    }
+    mensaje(respuesta) {
+        let toast = this.toastCtrl.create({
+            message: 'Error consulte al administrador',
+            duration: 5000,
+            position: 'bottom'
+        });
+        toast.present();
+    }
+    paginaPrincipal(info) {
+        var pluginArrayArg = new Array();
+        pluginArrayArg.push(info);
+        var myString = JSON.stringify(pluginArrayArg);
+        var obj = JSON.parse(myString);
+        this.info = obj;
+        this.navCtrl.setRoot(PrincipalPage, {
+            info: this.info
         });
     }
 }

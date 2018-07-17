@@ -8,12 +8,12 @@
         <ion-list *ngFor="let list of img" > 
             <ion-row>
                 <ion-col> <img src= "{{list.imagen}}" width="100" height="200"></ion-col>
-                <ion-col> <ion-row><ion-label color="negro"  stacked>ID:   {{lista.isbn}}</ion-label></ion-row>
-                    <ion-row><ion-label color="negro" stacked>TITULO:   {{lista.titulo}}</ion-label></ion-row>
-                    <ion-row><ion-label color="negro" stacked>AUTOR:    {{lista.autor}}</ion-label></ion-row>
-                    <ion-row><ion-label color="negro" stacked>TEMA:   {{lista.tema}}</ion-label></ion-row>
-                    <ion-row><ion-label color="negro" stacked>EDITORIAL:   {{lista.editorial}}</ion-label></ion-row>
-                    <ion-row><p ion-text color="negro">RESEÑA: {{list.resena}}</p></ion-row>   
+                <ion-col> <ion-row><ion-label color="negro"  stacked>Id:   {{lista.isbn}}</ion-label></ion-row>
+                    <ion-row><ion-label color="negro" stacked>Titulo:   {{lista.titulo}}</ion-label></ion-row>
+                    <ion-row><ion-label color="negro" stacked>Autor:    {{lista.autor}}</ion-label></ion-row>
+                    <ion-row><ion-label color="negro" stacked>Tema:   {{lista.tema}}</ion-label></ion-row>
+                    <ion-row><ion-label color="negro" stacked>Editorial:   {{lista.editorial}}</ion-label></ion-row>
+                    <ion-row><p ion-text color="negro">Reseña: {{list.resena}}</p></ion-row>   
                 </ion-col>
             </ion-row>
         </ion-list>
@@ -21,14 +21,14 @@
     <form [formGroup]="myForm">
         <ion-grid>
             <ion-row nowrap class="forecast_container">
-                <p>FECHA DE RESERVA</p>
-                <p>NUMERO DE DIAS RESERVADOS</p>
-                <p>FECHA DE ENTREGA</p>
+                <P>Fecha De Reserva</P>
+                <P>Numero De Dias Reservados</P>
+                <P>Fecha De Entrega</P>
             </ion-row>
             <ion-row>
                 <ion-col>  <p ion-text color="negro">{{fecha1}}</p></ion-col>
                 <ion-col col-4>    
-                    <ion-select (ionChange)="calcular_dias()" formControlName="dias" cancelText="Cancelar" okText = "Aceptar"  placeholder="#"> 
+                    <ion-select (ionChange)="calcular_dias()" formControlName="dias" cancelText="Cancelar" okText = "Aceptar"> 
                         <ion-option value="1">1</ion-option>
                         <ion-option value="2">2</ion-option>
                     </ion-select>

@@ -3,22 +3,16 @@
     font-size: 18px;
     src:url(../..//assets/fonts/arriba.otf)
 }
-
 page-reserva{
-    
-
-     h6{
+    h6{
         color:#C12859;
         font-family: "LETRA_CABECERA";
     }
-    
-   p
-    {
+    p{
         color:#000000;
         font-weight: 900;
-    
     }   
-    
+
     ion-label {
         font-weight: 900;
     }
@@ -31,20 +25,15 @@ page-reserva{
     ion-datetime{
         font-weight: 900;
     }
-
-  ion-content {
-    background-image: url("../assets/imgs/fondo_1.png");
-    background-size: cover;
-    background-position: center;
-}
-
-
-
-.forecast_container{
+    ion-content {
+        background-image: url("../assets/imgs/fondo_1.png");
+        background-size: cover;
+        background-position: center;
+    }
+    .forecast_container{
         overflow-x: scroll!important;
-        word-wrap: break-word;
-        
+        word-wrap: break-word;   
         font-size:0.8em;
         font-weight:500
-}
+    }
 }

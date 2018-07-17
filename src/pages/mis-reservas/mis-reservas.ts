@@ -26,7 +26,6 @@ export class MisReservasPage {
         for (var cod of this.info) {
             this.codigo = cod.codigo;
         }
-
         let infor = {
             codigo: this.codigo
         }
@@ -34,7 +33,6 @@ export class MisReservasPage {
         this.respuesta.subscribe(data => {
             this.ProcesarTabla(data);
         }, err => {
-            console.log(err);
             this.presentToast("Error servidor.Contacte al administrador");
         });
     }
@@ -66,7 +64,7 @@ export class MisReservasPage {
                         }
                         this.respuesta = this.ConectServ.Eliminar_reser(infor);
                         this.respuesta.subscribe(data => {
-                            console.log(data);
+
                             this.respuesta = data
                             if (this.respuesta.sucess == "ok") {
                                 let toast = this.toastCtrl.create({
@@ -77,19 +75,17 @@ export class MisReservasPage {
                                 toast.present();
                                 this.navCtrl.setRoot(PrincipalPage, {info: this.info});
                             }
-                            else if (this.respuesta.sucess == "no") {
+                            else {
                                 this.presentToast("No se ha podido cancelar el libro");
                             }
                         }, err => {
-                            console.log(err)
-                            this.presentToast("Error en el servidor.Contacte al administrador");
+                            this.presentToast("Error en el servidor Contacte al administrador");
                         });
                     }
                 }
             ]
         });
         alert.present();
-
     }
     presentToast(msg) {
         let toast = this.toastCtrl.create({

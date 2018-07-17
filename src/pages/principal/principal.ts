@@ -5,6 +5,7 @@ import {MisReservasPage} from '../mis-reservas/mis-reservas';
 import {HomePage} from '../home/home';
 import {ModificarPage} from '../modificar/modificar';
 import {MisMultasPage} from '../mis-multas/mis-multas';
+import {CambioClavePage} from '../cambio-clave/cambio-clave';
 
 @IonicPage()
 @Component({
@@ -20,7 +21,7 @@ export class PrincipalPage {
         public navCtrl: NavController,
         public navParams: NavParams) {
         this.info = navParams.get("info");
-        console.log(this.info);
+   
     }
     listar() {
         this.ocultar = !this.ocultar;
@@ -40,6 +41,9 @@ export class PrincipalPage {
     }
     Modificar() {
         this.navCtrl.push(ModificarPage, {info: this.info});
+    }
+    CambiarClave() {
+        this.navCtrl.push(CambioClavePage, {info: this.info});
     }
 }
 

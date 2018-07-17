@@ -64,52 +64,24 @@ export class RegistroPage {
 
 
         this.respuesta = this.ConectServ.Insertar_tabla(info);
-
         this.respuesta.subscribe(data => {
-
             this.respuesta = data;
-
             if (this.respuesta.sucess == "ok") {
-                
-                if (info.foto=="assets/imgs/icono_foto.png"){
-                   let toast = this.toastCtrl.create({
-                    message: 'El usuario ha sido registrado Satisfactoriamente',
-                    duration: 5000,
-                    position: 'bottom'
-
-                });
-                toast.present(); 
-                 this.navCtrl.setRoot(HomePage);
+                if (info.foto == "assets/imgs/icono_foto.png") {
+                    this.mensaje("El usuario ha sido registrado Satisfactoriamente");
+                    this.navCtrl.setRoot(HomePage);
                 }
-                else{
-                   this.SubirSer(); 
+                else {
+                    this.SubirSer();
                 }
-                
             }
-            else if (this.respuesta.sucess == "no") {
-                let toast = this.toastCtrl.create({
-                    message: 'El usuario no se ha podido registrar en nuestras base de datos',
-                    duration: 5000,
-                    position: 'bottom'
-
-                });
-                toast.present();
+            else {
+                this.mensaje("El usuario no se ha podido registrar en nuestras base de datos");
             }
-
         }, err => {
-            console.error(err);
-            let toast = this.toastCtrl.create({
-
-                message: 'Error consulte al administrador',
-                duration: 5000,
-                position: 'bottom'
-
-            });
-            toast.present();
+            this.mensaje("Error consulte al administrador");
         });
-
     }
-
     ActivarCAM() {
         let options: CameraOptions = {
             destinationType: this.camera.DestinationType.DATA_URL,
@@ -120,8 +92,6 @@ export class RegistroPage {
         this.camera.getPicture(options)
             .then(imageData => {
                 this.foto = `data:image/jpeg;base64,${imageData}`;
-
-
             })
             .catch(error => {
                 console.error(error);
@@ -139,7 +109,6 @@ export class RegistroPage {
         this.camera.getPicture(options)
             .then(imageData => {
                 this.foto = imageData;
-
             })
             .catch(error => {
                 console.error(error);
@@ -147,12 +116,10 @@ export class RegistroPage {
     }
 
     SubirSer() {
-
         let loader = this.loadingCtrl.create({
             content: "Registrando su informacion..."
         });
         loader.present();
-
         const fileTransfer: FileTransferObject = this.transfer.create();
         var random = Math.floor(Math.random() * 1000000);
         let options: FileUploadOptions = {
@@ -172,18 +139,21 @@ export class RegistroPage {
                 };
                 this.respuesta = this.ConectServ.Actualizar_Foto(datos);
                 this.respuesta.subscribe(data => {
-                   
-                loader.dismiss();
-                let toast = this.toastCtrl.create({
-                    message: 'El usuario ha sido registrado Satisfactoriamente',
-                    duration: 5000,
-                    position: 'bottom'
+                    loader.dismiss();
+                    this.mensaje("El usuario ha sido registrado Satisfactoriamente");
+                    this.navCtrl.setRoot(HomePage);
+                }, (err) => {
+                    loader.dismiss();
                 });
-                toast.present();
-                this.navCtrl.setRoot(HomePage);
-            }, (err) => {
-                loader.dismiss();
             });
-    });
+    }
+
+    mensaje(mensaje) {
+        let toast = this.toastCtrl.create({
+            message: mensaje,
+            duration: 5000,
+            position: 'bottom'
+        });
+        toast.present();
     }
 }

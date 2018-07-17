@@ -3,28 +3,22 @@
     font-size: 18px;
     src:url(../..//assets/fonts/arriba.otf)
 }
-
 page-home {
     h6{
         color:#C12859;
         font-family: "LETRA_CABECERA";
     }
-    
-   p
+    p
     {
         font-weight: 900;
     }   
-    
     ion-label {
         font-weight: 900;
     }
     ion-input{
         font-weight: 900;
     }
-
 }
-
-//Codigo del fondo
 ion-content {
     background-image: url("../assets/imgs/fondo_1.png");
     background-size: cover;

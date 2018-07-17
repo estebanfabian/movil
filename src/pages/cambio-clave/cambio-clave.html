@@ -1,0 +1,48 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            <h6 align="left">Cambio de Contraseña</h6>
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <form [formGroup]="myForm">
+        <ion-list>
+            <ion-item>
+                <ion-icon name="eye-off" item-start></ion-icon>
+                <ion-label color="negro" stacked>Contraseña:</ion-label>
+                <ion-input formControlName="contrasena" type="password" placeholder="Antigua Contraseña"></ion-input>
+            </ion-item> 
+            <ion-item *ngIf="myForm.get('contrasena').errors && myForm.get('contrasena').dirty">
+                <p color="danger" ion-text *ngIf="myForm.get('contrasena').hasError('required')">Este campo es requerido</p>
+                <p color="danger" ion-text *ngIf="myForm.get('contrasena').hasError('minlength')">Minimo 6 caracteres</p>
+            </ion-item>             
+            <ion-item>
+                <ion-icon name="eye-off" item-start></ion-icon>
+                <ion-label color="negro" stacked>Contraseña:</ion-label>
+                <ion-input formControlName="contrasena1" type="password" placeholder="Nueva Contraseña"></ion-input>
+            </ion-item>  
+            <ion-item *ngIf="myForm.get('contrasena1').errors && myForm.get('contrasena1').dirty">
+                <p color="danger" ion-text *ngIf="myForm.get('contrasena1').hasError('required')">Este campo es requerido</p>
+                <p color="danger" ion-text *ngIf="myForm.get('contrasena1').hasError('minlength')">Minimo 6 caracteres</p>
+            </ion-item>  
+            <ion-item>
+                <ion-icon name="eye-off" item-start></ion-icon>
+                <ion-label color="negro" stacked>Contraseña:</ion-label>
+                <ion-input formControlName="contrasena2" type="password" placeholder="Nueva Contraseña"></ion-input>
+            </ion-item>  
+            <ion-item *ngIf="myForm.get('contrasena2').errors && myForm.get('contrasena2').dirty">
+                <p color="danger" ion-text *ngIf="myForm.get('contrasena2').hasError('required')">Este campo es requerido</p>
+                <p color="danger" ion-text *ngIf="myForm.get('contrasena2').hasError('minlength')">Minimo 6 caracteres</p>
+            </ion-item>  
+        </ion-list>
+        <div padding>
+            <button ion-button block type="submit" [disabled]="!myForm.valid" (click)="validacion()">Cambiar contraseña</button>
+        </div>
+    </form>
+</ion-content>  
+<ion-footer>
+    <ion-navbar>
+        <img src="assets/imgs/abajo.png">
+    </ion-navbar>
+</ion-footer>
