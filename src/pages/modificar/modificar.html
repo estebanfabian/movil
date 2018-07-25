@@ -12,8 +12,8 @@
                         <img src="{{foto}}" width="100" >
                     </ion-col>
                     <ion-col>
-                      <ion-col col-6><button ion-button color="primary" clear  (click)="ActivarCAM()">Tomar Foto</button></ion-col>
-                    <ion-col col-6><button ion-button color="primary"clear  (click)="BuscarSD()">Subir Imagen</button> </ion-col>
+                        <ion-col col-6><button ion-button color="primary" clear  (click)="ActivarCAM()">Tomar Foto</button></ion-col>
+                        <ion-col col-6><button ion-button color="primary"clear  (click)="BuscarSD()">Subir Imagen</button> </ion-col>
                     </ion-col>
                 </ion-row>
             </ion-grid>
@@ -51,14 +51,15 @@
                 <p color="danger" ion-text *ngIf="myForm.get('direccion').hasError('required')">Este campo es requerido</p>
             </ion-item>
             <ion-item>
-                <ion-icon name="calendar" item-start></ion-icon>
+                <ion-icon name="home" item-start></ion-icon>
                 <ion-label stacked>Fecha de Nacimiento:</ion-label>
-
-                <ion-input formControlName="fechaNacimiento" type="text" placeholder="Fecha de Nacimiento" value="{{usuario.fechaNacimiento}}"></ion-input>
+                <ion-input formControlName="fechaNacimiento" type="text" placeholder="Fecha de Nacimiento" value="{{usuario.fechaNacimiento}}" readonly></ion-input>
             </ion-item>
             <ion-item *ngIf="myForm.get('fechaNacimiento').errors && myForm.get('fechaNacimiento').dirty">
                 <p color="danger" ion-text *ngIf="myForm.get('fechaNacimiento').hasError('required')">Este campo es requerido</p>
             </ion-item>
+
+
             <ion-item>
                 <ion-icon name="mail" item-start></ion-icon>
                 <ion-label stacked>Correo:</ion-label>
@@ -68,10 +69,12 @@
                 <p color="danger" ion-text *ngIf="myForm.get('emailPrincipal').hasError('required')">Este campo es requerido</p>
                 <p color="danger" ion-text *ngIf="myForm.get('emailPrincipal').hasError('email')">Este correo no es válido</p>
             </ion-item>
-            <div padding>
+             <div padding>
                 <button ion-button block type="submit" [disabled]="!myForm.valid" (click)="Modificar()">Actualizar</button>
             </div>       
-        </div>
+              </div>
+
+
     </form>
 </ion-content>
 <ion-footer>

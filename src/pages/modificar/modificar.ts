@@ -32,6 +32,7 @@ export class ModificarPage {
         public loadingCtrl: LoadingController) {
         this.myForm = this.ValidarForm();
         this.info = navParams.get("info");
+
         for (var cod of this.info) {
             this.codigo = cod.codigo;
             this.nombre = cod.nombre;
@@ -39,13 +40,14 @@ export class ModificarPage {
         let infor = {
             codigo: this.codigo
         }
-
         this.respuesta = this.ConectServ.mostrar_usuario(infor);
         this.respuesta.subscribe(data => {
             this.lista = data;
-            for (var fech of this.lista) {
-                this.foto = fech.foto;
+            for (var usuario of this.lista) {
+                this.foto = usuario.foto;
+                this.fechaNacimiento = usuario.fechaNacimiento;
             }
+            console.log(this.fechaNacimiento);
         }, err => {
             console.log(err);
         });
@@ -53,9 +55,14 @@ export class ModificarPage {
 
     private ValidarForm() {
         return this.formBuilder.group({
+            nombre: ['', [Validators.required, Validators.pattern('[a-zA-Zñ]*'), Validators.minLength(3)]],
+            apellido: ['', [Validators.required, Validators.pattern('[a-zA-Zñ]*'), Validators.minLength(3)]],
+            codigo: ['', [Validators.required, Validators.pattern('[0-9]*'), Validators.minLength(6), Validators.maxLength(10)]],
             telefonoPrincipal: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(20)]],
             direccion: ['', [Validators.required]],
+            fechaNacimiento: [this.fechaNacimiento, [Validators.required]],
             emailPrincipal: ['', [Validators.required, Validators.email]],
+
         });
     }
 
@@ -75,7 +82,6 @@ export class ModificarPage {
                 this.mensaje('Error al activar la camara');
             });
     }
-
     BuscarSD() {
         let options: CameraOptions = {
             destinationType: this.camera.DestinationType.FILE_URI,
@@ -93,7 +99,6 @@ export class ModificarPage {
                 this.mensaje('Erro al carga imagen de la SD');
             });
     }
-
     SubirSer() {
 
         let loader = this.loadingCtrl.create({
@@ -170,13 +175,14 @@ export class ModificarPage {
     }
     mensaje(respuesta) {
         let toast = this.toastCtrl.create({
-            message: 'Error consulte al administrador',
+            message: respuesta,
             duration: 5000,
             position: 'bottom'
         });
         toast.present();
     }
     paginaPrincipal(info) {
+
         var pluginArrayArg = new Array();
         pluginArrayArg.push(info);
         var myString = JSON.stringify(pluginArrayArg);

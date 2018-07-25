@@ -6,7 +6,7 @@ export class ConectarProvider {
     constructor(public http: HttpClient) {
     }
     url = 'http://192.168.0.15/biblioteca/'// 
-    //url = 'http://192.168.0.11/biblioteca/'// 
+   //url = 'http://192.168.0.11/biblioteca/'// 
     //url = 'http://192.168.0.21/'// servi
     options = {
         headers: {
@@ -18,7 +18,6 @@ export class ConectarProvider {
         return this.http.post(url, JSON.stringify(dataJSON), this.options)
     }
     Validar_user(dataJSON) {
-        console.log("entra");
         var url = this.url + 'Validar';
         return this.http.post(url, JSON.stringify(dataJSON), this.options)
     }
@@ -80,6 +79,7 @@ export class ConectarProvider {
         return this.http.post(url, JSON.stringify(dataJSON), this.options)
     }
     mostrar_usuario(dataJSON) {
+        console.log(JSON);
         var url = this.url + 'Most_usuario';
         return this.http.post(url, JSON.stringify(dataJSON), this.options)
     }
@@ -88,7 +88,6 @@ export class ConectarProvider {
         return this.http.post(url, JSON.stringify(dataJSON), this.options)
     }
     Cambio_Clave(dataJSON) {
-
         var url = this.url + 'CambioClave';
         return this.http.post(url, JSON.stringify(dataJSON), this.options)
     }
