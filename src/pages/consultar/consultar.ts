@@ -26,14 +26,14 @@ export class ConsultarPage {
         this.info = navParams.get("info");
     }
 
-    private ValidarForm() {
+    private ValidarForm() {//se realiza la validacion de los campos  que cumpla los parametro de longitud establecidos
         return this.formBuilder.group({
             Buscar: ['', [Validators.required]],
             Consulta: ['', [Validators.required]],
         });
     }
 
-    Datos_libro() {
+    Datos_libro() {// se crea un caso para verificar el filtro que selecione el usuario
 
         switch (this.formu.value.Buscar) {
             case "Id": {
@@ -61,10 +61,14 @@ export class ConsultarPage {
                 this.error(this.respuesta);
                 break;
             }
+            default: {
+                this.presentToast("Error en el servidor Contacte al administrador");
+                break;
+            }
         }
     }
 
-    ProcesarTabla(listar) {
+    ProcesarTabla(listar) {//indica la cantidad de libro que este con el filtro y parametros de busqueda
 
         if (listar.length == 0) {
             this.presentToast("No hay libros registrados");
@@ -74,7 +78,7 @@ export class ConsultarPage {
             this.ocultar = true;
         }
     }
-    presentToast(msg) {
+    presentToast(msg) {// se crea una funcion para mostrar los mensaje
         let toast = this.toastCtrl.create({
             message: msg,
             duration: 3000,
@@ -83,12 +87,12 @@ export class ConsultarPage {
         toast.present();
     }
 
-    reservar(lista) {
+    reservar(lista) {//esta funcion nos envia a la siguiente pagina
         this.navCtrl.push(ReservaPage, {
             lista: lista, info: this.info
         });
     }
-    error(respuesta) {
+    error(respuesta) {// maneja los errores que se proboque al momento de ejecucion
         this.respuesta.subscribe(data => {
             this.ProcesarTabla(data);
         }, err => {

@@ -14,6 +14,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class ReservaPage {
     lista;
     respuesta;
+    respuesta1;
     img;
     fecha1;
     fecha2;
@@ -55,7 +56,7 @@ export class ReservaPage {
                 this.fecha2 = moment(this.fecha1).add(2, "days").format('YYYY/MM/DD hh:mm:ss');
             }
         }
-        else  {
+        else {
             this.fecha2 = moment(this.fecha1).add(2, "days").format('YYYY/MM/DD hh:mm:ss');
             if (moment(this.fecha2).format("dddd") == "Sunday") {
                 this.fecha2 = moment(this.fecha1).add(3, "days").format('YYYY/MM/DD hh:mm:ss');
@@ -86,6 +87,7 @@ export class ReservaPage {
                     this.navCtrl.setRoot(PrincipalPage, {info: this.info});
                 }
                 else {
+                    console.log(infor);
                     this.respuesta = this.ConectServ.Reservar_libro(infor);
                     this.respuesta.subscribe(data => {
                         this.respuesta = data;
@@ -102,6 +104,7 @@ export class ReservaPage {
                         this.navCtrl.setRoot(PrincipalPage, {info: this.info});
                     });
                 }
+
             }
         },
             err => {
@@ -109,7 +112,7 @@ export class ReservaPage {
                 this.navCtrl.setRoot(PrincipalPage, {info: this.info});
             });
     }
-    mensaje(mensaje) {
+    mensaje(mensaje) {// se crea la funcion reducuir la linea de codigo al momento de imprimir mensajes
         let toast = this.toastCtrl.create({
             message: mensaje,
             duration: 5000,

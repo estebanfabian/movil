@@ -22,21 +22,19 @@ export class HomePage {
         private toastCtrl: ToastController) {
         this.form = this.ValidarForm();
     }
-    private ValidarForm() {
+    private ValidarForm() {//se realiza la validacion de los campos  que cumpla los parametro de longitud establecidos
         return this.formBuilder.group({
             codigo: ['', [Validators.required, Validators.pattern('[0-9]*'), Validators.minLength(6), Validators.maxLength(10)]],
             contrasena: ['', [Validators.required, Validators.minLength(6)]],
         });
     }
-    ValidarUsuario() {
+    ValidarUsuario() {// realiza la validacion con la base de datos para permitit el acceso a los usuario
         this.respuesta = this.ConectServ.Validar_user(this.form.value);
         this.respuesta.subscribe(data => {
             this.info = data;
             if (this.info.length == 1) {
                 this.mensaje("Bienvenido señor usuario!!");
-                this.navCtrl.setRoot(PrincipalPage, {
-                    info: this.info
-                });
+                this.navCtrl.setRoot(PrincipalPage, {info: this.info});// envia al usuario a la pantalla principal si la infomacion  login es correcta
             }
             else {
                 this.mensaje("Error! El codigo o la contraseña estan mal escritas");
@@ -46,13 +44,13 @@ export class HomePage {
             this.mensaje("Error Consulte al administrador");
         });
     }
-    Ir_Registro() {
+    Ir_Registro() {// envia al usuario al pagina de registro
         this.navCtrl.push(RegistroPage);
     }
-    Ir_Contra() {
+    Ir_Contra() {// envia al usuario al pagina de olvide contraseña
         this.navCtrl.push(OlvidarContraPage);
     }
-    mensaje(mensaje) {
+    mensaje(mensaje) {// se crea la funcion reducuir la linea de codigo
         let toast = this.toastCtrl.create({
             message: mensaje,
             duration: 5000,

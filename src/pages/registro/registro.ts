@@ -148,7 +148,8 @@ export class RegistroPage {
             });
     }
 
-    mensaje(mensaje) {
+    mensaje(mensaje) {// se crea la funcion reducuir la linea de codigo al momento de imprimir mensajes
+      
         let toast = this.toastCtrl.create({
             message: mensaje,
             duration: 5000,

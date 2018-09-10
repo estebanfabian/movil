@@ -4,8 +4,7 @@ import {ConsultarPage} from '../consultar/consultar';
 import {MisReservasPage} from '../mis-reservas/mis-reservas';
 import {HomePage} from '../home/home';
 import {ModificarPage} from '../modificar/modificar';
-import {MisMultasPage} from '../mis-multas/mis-multas';
-import {CambioClavePage} from '../cambio-clave/cambio-clave';
+
 
 @IonicPage()
 @Component({
@@ -21,13 +20,14 @@ export class PrincipalPage {
         public navCtrl: NavController,
         public navParams: NavParams) {
         this.info = navParams.get("info");
-   
     }
     listar() {
+
         this.ocultar = !this.ocultar;
-       }
-    
+    }
+
     consultar() {
+
         this.navCtrl.push(ConsultarPage, {info: this.info});
     }
     Mis_Reservas() {
@@ -36,14 +36,11 @@ export class PrincipalPage {
     Ir_Home() {
         this.navCtrl.setRoot(HomePage);
     }
-    Multas() {
-        this.navCtrl.push(MisMultasPage, {info: this.info});
+    Multas(){
+        
     }
-    Modificar() {
-        this.navCtrl.push(ModificarPage, {info: this.info});
-    }
-    CambiarClave() {
-        this.navCtrl.push(CambioClavePage, {info: this.info});
+    Modificar(){
+        this.navCtrl.push(ModificarPage ,{info: this.info});
     }
 }
 

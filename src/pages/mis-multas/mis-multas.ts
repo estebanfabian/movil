@@ -30,20 +30,20 @@ export class MisMultasPage {
         }
         this.respuesta = this.ConectServ.Mis_Multas(infor);
         this.respuesta.subscribe(data => {
-            this.ProcesarTabla(data);
+            this.ProcesarMulta(data);
         }, err => {
             this.presentToast("Error servidor.Contacte al administrador");
         });
     }
-    ProcesarTabla(listar) {
+    ProcesarMulta(listar) {
 
         if (listar.length == 0) {
-            this.presentToast("No hay libros reservados");
+            this.presentToast("Error servidor.Contacte al administrador");
         } else {
             this.tarje = listar;
         }
     }
-    presentToast(msg) {
+    presentToast(msg) {// se crea la funcion reducuir la linea de codigo
         let toast = this.toastCtrl.create({
             message: msg,
             duration: 3000,

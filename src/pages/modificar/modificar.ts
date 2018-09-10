@@ -54,7 +54,7 @@ export class ModificarPage {
     }
 
     private ValidarForm() {
-        return this.formBuilder.group({
+        return this.formBuilder.group({// se realiza la validacion según los datos 
             nombre: ['', [Validators.required, Validators.pattern('[a-zA-Zñ]*'), Validators.minLength(3)]],
             apellido: ['', [Validators.required, Validators.pattern('[a-zA-Zñ]*'), Validators.minLength(3)]],
             codigo: ['', [Validators.required, Validators.pattern('[0-9]*'), Validators.minLength(6), Validators.maxLength(10)]],
@@ -66,7 +66,7 @@ export class ModificarPage {
         });
     }
 
-    ActivarCAM() {
+    ActivarCAM() {// se realiza la funcio para poder acceder a la camara del dispositivo
         let options: CameraOptions = {
             destinationType: this.camera.DestinationType.DATA_URL,
             targetWidth: 1000,
@@ -82,7 +82,7 @@ export class ModificarPage {
                 this.mensaje('Error al activar la camara');
             });
     }
-    BuscarSD() {
+    BuscarSD() {// se realiza la funcion para poder ingresar a la SD si el usuario lo desea
         let options: CameraOptions = {
             destinationType: this.camera.DestinationType.FILE_URI,
             sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
@@ -100,12 +100,11 @@ export class ModificarPage {
             });
     }
     SubirSer() {
-
         let loader = this.loadingCtrl.create({
             content: "Actualizando su informacion..."
         });
         loader.present();
-        if (this.cambio == 0) {
+        if (this.cambio == 0) {// si el usuario cambio la foto hace la subida de la nueva foto
             const fileTransfer: FileTransferObject = this.transfer.create();
             var random = Math.floor(Math.random() * 1000000);
             let options: FileUploadOptions = {
@@ -146,7 +145,7 @@ export class ModificarPage {
             this.paginaPrincipal(info);
         }
     }
-    Modificar() {
+    Modificar() {// se realiza la funcion para modificar los datos que sea necesitados del usuario
         let info = {
             codigo: this.myForm.value.codigo,
             telefonoPrincipal: this.myForm.value.telefonoPrincipal,
@@ -167,13 +166,13 @@ export class ModificarPage {
                 }
             }
             else {
-                this.mensaje('El usuario no se ha podido registrar en nuestras base de datos');
+                this.mensaje('El usuario no se ha podido registrar en la  base de datos');
             }
         }, err => {
             this.mensaje('Error consulte al administrador');
         });
     }
-    mensaje(respuesta) {
+    mensaje(respuesta) {// se crea la funcion reducuir la linea de codigo al momento de imprimir mensajes
         let toast = this.toastCtrl.create({
             message: respuesta,
             duration: 5000,
@@ -181,15 +180,12 @@ export class ModificarPage {
         });
         toast.present();
     }
-    paginaPrincipal(info) {
-
+    paginaPrincipal(info) {// esta funciona se hace para que el cambio de la foto se hag de manera inmediata
         var pluginArrayArg = new Array();
         pluginArrayArg.push(info);
         var myString = JSON.stringify(pluginArrayArg);
         var obj = JSON.parse(myString);
         this.info = obj;
-        this.navCtrl.setRoot(PrincipalPage, {
-            info: this.info
-        });
+        this.navCtrl.setRoot(PrincipalPage, {info: this.info});
     }
 }

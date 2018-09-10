@@ -33,7 +33,7 @@ export class CambioClavePage {
             this.codigo = cod.codigo;
         }
     }
-    private ValidarForm() {
+    private ValidarForm() {//se realiza la validacion de los campos  que cumpla los parametro de longitud establecidos
         return this.formBuilder.group({
             contrasena: ['', [Validators.required, Validators.minLength(6)]],
             contrasena1: ['', [Validators.required, Validators.minLength(6)]],
@@ -41,7 +41,7 @@ export class CambioClavePage {
         });
     }
     CambioClave() {
-        let info = {
+        let info = {//se  crea el json  para poder enviar los parametros por POST
             codigo: this.codigo,
             contrasena: this.myForm.value.contrasena
         }
@@ -56,11 +56,9 @@ export class CambioClavePage {
                 this.respuesta = this.ConectServ.Cambio_Clave(info);
                 this.respuesta.subscribe(data => {
                     this.respuesta = data;
-                    if (this.respuesta.sucess == "ok") {
+                    if (this.respuesta.sucess == "ok") {// se verifica la respuesta del Query 
                         this.mensaje("Se cambio la contraseña con exito");
-                        this.navCtrl.setRoot(PrincipalPage, {
-                            info: this.info
-                        });
+                        this.navCtrl.setRoot(PrincipalPage, {info: this.info});// se envia a la pantalla principal
                     } else {
                         this.mensaje("No se pudo cambiar la contraseña");
                         this.myForm.reset();
@@ -72,14 +70,14 @@ export class CambioClavePage {
             }
         });
     }
-    validacion() {
+    validacion() {// esta funcion verifica que los dos campos tenga el mismo contenido
         if (this.myForm.value.contrasena1 == this.myForm.value.contrasena2) {
             this.CambioClave();
         } else {
             this.mensaje("Los campos nueva contraseña no coinciden");
         }
     }
-    mensaje(mensaje) {
+    mensaje(mensaje) {// se crea una funcion para enviar los mensajes
         let toast = this.toastCtrl.create({
             message: mensaje,
             duration: 5000,

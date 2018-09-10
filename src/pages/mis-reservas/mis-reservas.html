@@ -11,7 +11,7 @@
             </ion-avatar>
             <h2>{{lista.titulo}}</h2>
             <p># {{lista.isbn}}</p>
-            <div *ngIf="lista.actividad== '1'" ><p>Reservado</p></div> 
+
             <div *ngIf="lista.actividad== '2'" ><p>En préstamo</p></div>             
         </ion-item>
         <img src="{{lista.imagen}}" width="25" height="200"    >
@@ -19,25 +19,51 @@
             <p>{{lista.resena}}</p>
         </ion-card-content>
         <ion-row>
-            <ion-col>
-                <ion-item>
-                    <p>Dia reserva</p>
-                    <p>{{lista.diaPrestamo}}</p>
-                </ion-item>
-            </ion-col>
-            <ion-col>
-                <ion-item>
-                    <p>Dia entrega</p>
-                    <p>{{lista.diaEntrega}}</p>
-                </ion-item>
-            </ion-col>
+            <div *ngIf="lista.actividad== '1'" >
+                <ion-col>
+                    <ion-item>
+                        <p>Dia reserva</p>
+                        <p>{{lista.diaReserva}}</p>
+                    </ion-item>
+                </ion-col>
+                <ion-col>
+                    <ion-item>
+                        <p>Dia entrega</p>
+                        <p>{{lista.diaEntrega}}</p>
+                    </ion-item>
+                </ion-col>
+            </div> 
+
+            <div *ngIf="lista.actividad== '2'" >
+                <ion-col>
+                    <ion-item>
+                        <p>Dia Prestamo</p>
+                        <p>{{lista.diaPrestamo}}</p>
+                    </ion-item>
+                </ion-col>
+                <ion-col>
+                    <ion-item>
+                        <p>Dia entrega</p>
+                        <p>{{lista.diaEntrega}}</p>
+                    </ion-item>
+                </ion-col>
+            </div> 
+
+
+
             <ion-col center text-center>
                 <ion-note>
                     <div *ngIf="lista.actividad== '1'" > 
                         <button ion-button icon-left clear small (click)="cancelar(lista.idPrestamo)">
                                 <div>Cancelar Reserva</div>
                         </button>
-                    </div>                  
+                    </div>     
+                    <div *ngIf="lista.actividad== '2'" > 
+                        <div *ngIf="lista.renovacion== '1'" > 
+                            <button ion-button icon-left clear small (click)="renovacion(lista.idPrestamo)">
+                                    <div>Renovacion</div>
+                            </button>
+                        </div>  </div>
                 </ion-note>
             </ion-col>
         </ion-row>
