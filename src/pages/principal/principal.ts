@@ -7,21 +7,27 @@ import {ModificarPage} from '../modificar/modificar';
 import {MisMultasPage} from '../mis-multas/mis-multas';
 import {CambioClavePage} from '../cambio-clave/cambio-clave';
 import {RedesPage} from '../redes/redes';
+import {InAppBrowser} from '@ionic-native/in-app-browser';
+
 
 @IonicPage()
 @Component({
     selector: 'page-principal',
     templateUrl: 'principal.html',
 })
+
 export class PrincipalPage {
 
     info;
+    
     public ocultar: boolean = false;
 
     constructor(
         public navCtrl: NavController,
+        public iab : InAppBrowser,
         public navParams: NavParams) {
         this.info = navParams.get("info");
+
     }
     listar() {
         this.ocultar = !this.ocultar;
@@ -36,16 +42,20 @@ export class PrincipalPage {
     Ir_Home() {
         this.navCtrl.setRoot(HomePage);
     }
-    Multas(){
-        this.navCtrl.push(MisMultasPage ,{info: this.info});
+    Multas() {
+        this.navCtrl.push(MisMultasPage, {info: this.info});
     }
-    Modificar(){
-        this.navCtrl.push(ModificarPage ,{info: this.info});
+    Modificar() {
+        this.navCtrl.push(ModificarPage, {info: this.info});
     }
-    CambiarClave(){
-        this.navCtrl.push(CambioClavePage ,{info: this.info}); 
+    CambiarClave() {
+        this.navCtrl.push(CambioClavePage, {info: this.info});
     }
-     redes(){
-         this.navCtrl.push(RedesPage ,{info: this.info}); 
+    redes() {
+        this.navCtrl.push(RedesPage, {info: this.info});
+    }
+    OpenUrl() {
+        const browser = this.iab.create('https://urepublicana.edu.co/pages/index.php');
+            browser.show();
     }
 }

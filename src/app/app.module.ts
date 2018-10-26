@@ -20,6 +20,7 @@ import {FileTransfer, FileUploadOptions, FileTransferObject} from '@ionic-native
 import {File} from '@ionic-native/file';
 import {CambioClavePage} from '../pages/cambio-clave/cambio-clave';
 import {RedesPage} from '../pages/redes/redes';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 
 @NgModule({
@@ -64,7 +65,7 @@ import {RedesPage} from '../pages/redes/redes';
         FileTransfer,
         File,
         FileTransferObject,
-
+        InAppBrowser,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         ConectarProvider
     ]
