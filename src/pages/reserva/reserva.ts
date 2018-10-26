@@ -87,7 +87,6 @@ export class ReservaPage {
                     this.navCtrl.setRoot(PrincipalPage, {info: this.info});
                 }
                 else {
-                    console.log(infor);
                     this.respuesta = this.ConectServ.Reservar_libro(infor);
                     this.respuesta.subscribe(data => {
                         this.respuesta = data;

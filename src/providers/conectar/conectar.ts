@@ -5,7 +5,8 @@ import {Injectable} from '@angular/core';
 export class ConectarProvider {
     constructor(public http: HttpClient) {
     }
-       url = 'http://10.255.4.161/biblioteca/';
+    url = 'http://192.168.0.16:82/biblioteca/';
+    //  url = 'http://192.168.192.1:82/biblioteca/';
     options = {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -16,7 +17,6 @@ export class ConectarProvider {
         return this.http.post(url, JSON.stringify(dataJSON), this.options)
     }
     Validar_user(dataJSON) {
-        console.log(url);
         var url = this.url + 'Validar';
         return this.http.post(url, JSON.stringify(dataJSON), this.options)
     }
@@ -82,7 +82,6 @@ export class ConectarProvider {
         return this.http.post(url, JSON.stringify(dataJSON), this.options)
     }
     mostrar_usuario(dataJSON) {
-        console.log(JSON);
         var url = this.url + 'Most_usuario';
         return this.http.post(url, JSON.stringify(dataJSON), this.options)
     }

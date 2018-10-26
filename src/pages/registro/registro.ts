@@ -34,6 +34,7 @@ export class RegistroPage {
 
     private ValidarForm() {
         return this.formBuilder.group({
+            cedula: ['', [Validators.required, Validators.pattern('[0-9]*'), Validators.minLength(6), Validators.maxLength(10)]],
             nombre: ['', [Validators.required, Validators.pattern('[a-zA-Zñ]*'), Validators.minLength(3)]],
             apellido: ['', [Validators.required, Validators.pattern('[a-zA-Zñ]*'), Validators.minLength(3)]],
             codigo: ['', [Validators.required, Validators.pattern('[0-9]*'), Validators.minLength(6), Validators.maxLength(10)]],
@@ -49,7 +50,7 @@ export class RegistroPage {
 
     Insertar() {
         let info = {
-
+            cedula: this.myForm.value.cedula,
             nombre: this.myForm.value.nombre,
             apellido: this.myForm.value.apellido,
             codigo: this.myForm.value.codigo,
@@ -149,7 +150,7 @@ export class RegistroPage {
     }
 
     mensaje(mensaje) {// se crea la funcion reducuir la linea de codigo al momento de imprimir mensajes
-      
+
         let toast = this.toastCtrl.create({
             message: mensaje,
             duration: 5000,

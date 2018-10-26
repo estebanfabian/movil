@@ -58,8 +58,6 @@
             <ion-item *ngIf="myForm.get('fechaNacimiento').errors && myForm.get('fechaNacimiento').dirty">
                 <p color="danger" ion-text *ngIf="myForm.get('fechaNacimiento').hasError('required')">Este campo es requerido</p>
             </ion-item>
-
-
             <ion-item>
                 <ion-icon name="mail" item-start></ion-icon>
                 <ion-label stacked>Correo:</ion-label>
@@ -69,12 +67,10 @@
                 <p color="danger" ion-text *ngIf="myForm.get('emailPrincipal').hasError('required')">Este campo es requerido</p>
                 <p color="danger" ion-text *ngIf="myForm.get('emailPrincipal').hasError('email')">Este correo no es válido</p>
             </ion-item>
-             <div padding>
+            <div padding>
                 <button ion-button block type="submit" [disabled]="!myForm.valid" (click)="Modificar()">Actualizar</button>
             </div>       
-              </div>
-
-
+        </div>
     </form>
 </ion-content>
 <ion-footer>

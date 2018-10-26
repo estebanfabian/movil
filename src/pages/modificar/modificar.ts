@@ -47,7 +47,6 @@ export class ModificarPage {
                 this.foto = usuario.foto;
                 this.fechaNacimiento = usuario.fechaNacimiento;
             }
-            console.log(this.fechaNacimiento);
         }, err => {
             console.log(err);
         });

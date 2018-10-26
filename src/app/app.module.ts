@@ -19,7 +19,7 @@ import {MisMultasPage} from '../pages/mis-multas/mis-multas'
 import {FileTransfer, FileUploadOptions, FileTransferObject} from '@ionic-native/file-transfer';
 import {File} from '@ionic-native/file';
 import {CambioClavePage} from '../pages/cambio-clave/cambio-clave';
-
+import {RedesPage} from '../pages/redes/redes';
 
 
 @NgModule({
@@ -34,7 +34,8 @@ import {CambioClavePage} from '../pages/cambio-clave/cambio-clave';
         MisReservasPage,
         ModificarPage,
         MisMultasPage,
-        CambioClavePage
+        CambioClavePage,
+        RedesPage
     ],
     imports: [
         BrowserModule,
@@ -53,7 +54,8 @@ import {CambioClavePage} from '../pages/cambio-clave/cambio-clave';
         MisReservasPage,
         ModificarPage,
         MisMultasPage,
-        CambioClavePage
+        CambioClavePage,
+        RedesPage
     ],
     providers: [
         StatusBar,

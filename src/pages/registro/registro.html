@@ -9,6 +9,17 @@
     <form [formGroup]="myForm">
         <ion-list>
             <ion-item>
+                <ion-icon name="card" item-start></ion-icon>
+                <ion-label color="negro" stacked>Cedula:</ion-label>
+                <ion-input formControlName="cedula" type="number" placeholder="Cedula"></ion-input>
+            </ion-item>            
+            <ion-item *ngIf="myForm.get('cedula').errors && myForm.get('codigo').dirty">
+                <p color="danger" ion-text *ngIf="myForm.get('cedula').hasError('required')">Este campo es requerido</p>
+                <p color="danger" ion-text *ngIf="myForm.get('cedula').hasError('pattern')">Por favor escriba solo numeros</p>
+                <p color="danger" ion-text *ngIf="myForm.get('cedula').hasError('minlength')">Por favor escriba mínimo 6 caracteres</p>
+                <p color="danger" ion-text *ngIf="myForm.get('cedula').hasError('maxlength')">Por favor escriba máximo 10 caracteres</p>
+            </ion-item>
+            <ion-item>
                 <ion-icon name="person" item-start></ion-icon>
                 <ion-label color="negro"stacked>Nombre:</ion-label>
                 <ion-input formControlName="nombre" type="text" placeholder="Nombre"></ion-input>
@@ -39,7 +50,6 @@
                 <p color="danger" ion-text *ngIf="myForm.get('codigo').hasError('minlength')">Por favor escriba mínimo 6 caracteres</p>
                 <p color="danger" ion-text *ngIf="myForm.get('codigo').hasError('maxlength')">Por favor escriba máximo 10 caracteres</p>
             </ion-item>
-
             <ion-item>
                 <ion-icon name="call" item-start></ion-icon>
                 <ion-label color="negro" stacked>Télefono:</ion-label>
@@ -63,7 +73,6 @@
                 <ion-label color="negro" stacked>Fecha de Nacimiento:</ion-label>
                 <ion-datetime  formControlName="fechaNacimiento" displayFormat="YYYY/MM/DD" min="1950" max="2000" placeholder="Fecha de Nacimiento" ></ion-datetime>
             </ion-item>
-
             <ion-item *ngIf="myForm.get('fechaNacimiento').errors && myForm.get('fechaNacimiento').dirty">
                 <p color="danger" ion-text *ngIf="myForm.get('fechaNacimiento').hasError('required')">Este campo es requerido</p>
             </ion-item>
@@ -73,7 +82,6 @@
                 <ion-select color="negro" formControlName="sexo" placeholder="Sexo">      
                     <ion-option value="1">Masculino</ion-option>
                     <ion-option value="0">Femenino</ion-option>
-
                 </ion-select>
             </ion-item>
             <ion-item *ngIf="myForm.get('sexo').errors && myForm.get('sexo').dirty">

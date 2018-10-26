@@ -29,7 +29,7 @@ export class HomePage {
         });
     }
     ValidarUsuario() {// realiza la validacion con la base de datos para permitit el acceso a los usuario
-        this.respuesta = this.ConectServ.Validar_user(this.form.value);
+               this.respuesta = this.ConectServ.Validar_user(this.form.value);
         this.respuesta.subscribe(data => {
             this.info = data;
             if (this.info.length == 1) {

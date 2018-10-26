@@ -36,9 +36,8 @@ export class MisReservasPage {
         this.respuesta = this.ConectServ.Traer_Tarje(infor);
         this.respuesta.subscribe(data => {
             this.ProcesarTabla(data);
-            console.log(data);
         }, err => {
-            this.presentToast("Error servidor.Contacte al administrador");
+            this.presentToast("Error servidor Contacte al administrador");
         });
     }
 
@@ -47,7 +46,6 @@ export class MisReservasPage {
             this.presentToast("No hay libros reservados");
         } else {
             this.tarje = listar;
-            console.log(this.tarje);
         }
         this.calcular_dias();
     }
@@ -69,16 +67,12 @@ export class MisReservasPage {
                         let infor = {
                             diaEntrega: this.myDate,
                             idPrestamo: lista
-
                         };
-                        console.log(infor);
                         this.respuesta = this.ConectServ.Renovacion_liena(infor);
-                        console.log("paso");
-                        console.log(this.respuesta);
                         this.respuesta.subscribe(data => {
                             this.respuesta = data;
                             if (this.respuesta.sucess == "ok") {
-                                this.presentToast("cancelada");
+                                this.presentToast("Se a  renovado el libro con exito");
                                 this.navCtrl.setRoot(PrincipalPage, {info: this.info});
                             }
                             else {
@@ -115,7 +109,7 @@ export class MisReservasPage {
                         this.respuesta.subscribe(data => {
                             this.respuesta = data
                             if (this.respuesta.sucess == "ok") {
-                                this.presentToast("cancelada");
+                                this.presentToast("Se a eliminado la reserva con exito");
                                 this.navCtrl.setRoot(PrincipalPage, {info: this.info});
                             }
                             else {
