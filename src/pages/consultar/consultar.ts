@@ -69,7 +69,6 @@ export class ConsultarPage {
     }
 
     ProcesarTabla(listar) {//indica la cantidad de libro que este con el filtro y parametros de busqueda
-
         if (listar.length == 0) {
             this.presentToast("No hay libros registrados");
             this.ocultar = false;

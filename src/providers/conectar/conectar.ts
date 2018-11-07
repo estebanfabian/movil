@@ -5,8 +5,7 @@ import {Injectable} from '@angular/core';
 export class ConectarProvider {
     constructor(public http: HttpClient) {
     }
-    url = 'http://192.168.0.16:82/biblioteca/';
-    //  url = 'http://192.168.192.1:82/biblioteca/';
+    url = 'http://192.168.43.247:82/Biblioteca/';
     options = {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -21,7 +20,6 @@ export class ConectarProvider {
         return this.http.post(url, JSON.stringify(dataJSON), this.options)
     }
     Traer_Id(dataJSON) {
-
         var url = this.url + 'tablaXid';
         return this.http.post(url, JSON.stringify(dataJSON), this.options)
     }

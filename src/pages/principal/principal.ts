@@ -58,4 +58,8 @@ export class PrincipalPage {
         const browser = this.iab.create('https://urepublicana.edu.co/pages/index.php');
             browser.show();
     }
+     OpenUrl1() {
+        const browser = this.iab.create('https://urepublicana.edu.co/pages/index.php');
+            browser.show();
+    }
 }
