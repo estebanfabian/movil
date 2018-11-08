@@ -50,7 +50,7 @@ export class ConsultarPage {
                 break;
             } case "Tema": {
                 this.respuesta = this.ConectServ.Traer_Tema(this.formu.value);
-                this.error(this.respuesta);;
+                this.error(this.respuesta);
                 break;
             } case "Edit": {
                 this.respuesta = this.ConectServ.Traer_Editorial(this.formu.value);

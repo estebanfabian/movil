@@ -5,7 +5,7 @@ import {Injectable} from '@angular/core';
 export class ConectarProvider {
     constructor(public http: HttpClient) {
     }
-    url = 'http://192.168.43.247:82/Biblioteca/';
+    url = 'http://192.168.0.16:82/Biblioteca/';
     options = {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
